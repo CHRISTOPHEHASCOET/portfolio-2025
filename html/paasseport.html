@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Métadonnées SEO -->
+  <meta name="description" content="Terminal interactif de Christophe Hascoët. Découvrez mes projets de développement web, mes compétences et mon parcours." />
+  <meta property="og:title" content="C.Hascoët — Terminal Interactif" />
+  <meta property="og:description" content="Portfolio de Christophe Hascoët, développeur web." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://votre-domaine.com" />
+  <meta property="og:image" content="https://votre-domaine.com/assets/images/preview.jpg" />
+  
+ <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Styles CSS -->
+  <link rel="stylesheet" href="../css/passeport.css" />
+  <link rel="stylesheet" href="../css/normaliser.css">
+
+  <title>Terminal Interactif</title>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner" id="nav-container">
+      <a href="index.html" class="logo" id="logo-ref" aria-label="Accueil">
+        <img src="../asset/images/pilote christophehascoet3.png" alt="Portrait de Christophe Hascoët" />
+        <div class="logo-text-group">
+          <span class="logo-title">FLIGHT</span>
+          <span class="flight-id">SYS: CH-2025</span>
+        </div>
+      </a>
+
+      <!-- NOUVEAU : Horloge temps réel -->
+      <div class="realtime-clock" id="realtime-clock" aria-label="Heure UTC en temps réel">
+        --:--:--
+      </div>
+
+      <span class="plane-animated" id="plane" aria-hidden="true">✈</span>
+      <nav class="nav-desktop" aria-label="Navigation principale">
+        <a href="../html/départ.html" class="nav-link cockpit-btn" data-gate="A01">
+          <span class="gate-number">A01</span>
+          Départs
+        </a>
+        <a href="../html/paasseport.html" class="nav-link cockpit-btn" data-gate="B02">
+          <span class="gate-number">B02</span>
+          Passeport
+        </a>
+        <a href="../html/embarquement.html" class="nav-link cockpit-btn" data-gate="C03">
+          <span class="gate-number">C03</span>
+          Embarquement
+        </a>
+        <a href="case-studies.html" class="nav-link cockpit-btn" data-gate="D04">
+          <span class="gate-number">D04</span>
+          Plan de vol
+        </a>
+        <a href="profile.html" class="nav-link cockpit-btn" data-gate="E05">
+          <span class="gate-number">E05</span>
+          Cockpit
+        </a>
+        <a href="contact.html" class="nav-link cockpit-btn" data-gate="F06">
+          <span class="gate-number">F06</span>
+          Tour de Contrôle
+        </a>
+      </nav>
+  </header>
+
+  
+
+ 
+  <footer class="site-footer">
+    <section class="footer-inner" aria-label="Informations de bas de page">
+      <div class="footer-left-block">
+        <div class="runway-visual" aria-hidden="true">
+          <div class="runway-centerline"></div>
+          <div class="runway-lights">
+            <span class="runway-light"></span>
+            <span class="runway-light"></span>
+            <span class="runway-light"></span>
+            <span class="runway-light"></span>
+            <span class="runway-light"></span>
+          </div>
+          <p class="runway-label">RUNWAY 07L</p>
+          <p class="runway-code">07L</p>
+        </div>
+        <p class="piste-lights">
+          <span>&lt;&lt;&lt; ZONE SÉCURISÉE &gt;&gt;&gt;</span>
+          <span>FIN DE PARCOURS / TERMINAL</span>
+        </p>
+      </div>
+
+      <div class="footer-right-block">
+        <div class="status-row">
+          <span class="status-tag">SYSTEM ONLINE</span>
+          <span class="status-tag secondary">READY FOR TAKEOFF</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/CHRISTOPHEHASCOET" target="_blank" rel="noopener noreferrer"
+            aria-label="Aller vers mon profil GitHub (s'ouvre dans un nouvel onglet)">GitHub</a>
+          <a href="#" target="_blank" rel="noopener noreferrer"
+            aria-label="Aller vers mon profil LinkedIn (s'ouvre dans un nouvel onglet)">LinkedIn</a>
+          <span>© 2025 PILOTE DIGITAL — TOUS DROITS RÉSERVÉS</span>
+        </div>
+      </div>
+    </section>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/départ.js"></script>
+</body>
+
+</html>

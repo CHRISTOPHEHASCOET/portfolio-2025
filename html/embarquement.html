@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Métadonnées SEO -->
+  <meta name="description" content="Terminal interactif de Christophe Hascoët. Découvrez mes projets de développement web, mes compétences et mon parcours." />
+  <meta property="og:title" content="C.Hascoët — Terminal Interactif" />
+  <meta property="og:description" content="Portfolio de Christophe Hascoët, développeur web." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://votre-domaine.com" />
+  <meta property="og:image" content="https://votre-domaine.com/assets/images/preview.jpg" />
+  
+ <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Styles CSS -->
+  <link rel="stylesheet" href="../css/embarqueùent.css" />
+  <link rel="stylesheet" href="../css/normaliser.css">
+
+  <title>Terminal Interactif</title>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner" id="nav-container">
+      <a href="index.html" class="logo" id="logo-ref" aria-label="Accueil">
+        <img src="../asset/images/pilote christophehascoet3.png" alt="Portrait de Christophe Hascoët" />
+        <div class="logo-text-group">
+          <span class="logo-title">FLIGHT</span>
+          <span class="flight-id">SYS: CH-2025</span>
+        </div>
+      </a>
+
+      <!-- NOUVEAU : Horloge temps réel -->
+      <div class="realtime-clock" id="realtime-clock" aria-label="Heure UTC en temps réel">
+        --:--:--
+      </div>
+
+      <span class="plane-animated" id="plane" aria-hidden="true">✈</span>
+      <nav class="nav-desktop" aria-label="Navigation principale">
+        <a href="../html/départ.html" class="nav-link cockpit-btn" data-gate="A01">
+          <span class="gate-number">A01</span>
+          Départs
+        </a>
+        <a href="../html/paasseport.html" class="nav-link cockpit-btn" data-gate="B02">
+          <span class="gate-number">B02</span>
+          Passeport
+        </a>
+        <a href="../html/embarquement.html" class="nav-link cockpit-btn" data-gate="C03">
+          <span class="gate-number">C03</span>
+          Embarquement
+        </a>
+        <a href="case-studies.html" class="nav-link cockpit-btn" data-gate="D04">
+          <span class="gate-number">D04</span>
+          Plan de vol
+        </a>
+        <a href="profile.html" class="nav-link cockpit-btn" data-gate="E05">
+          <span class="gate-number">E05</span>
+          Cockpit
+        </a>
+        <a href="contact.html" class="nav-link cockpit-btn" data-gate="F06">
+          <span class="gate-number">F06</span>
+          Tour de Contrôle
+        </a>
+      </nav>
+  </header>
+
+ <main class="container">
+
+        <h1 class="page-title"><span>✈</span>HISTORIQUE DE VOLS</h1>
+        <p class="page-subtitle">Archives des déploiements : Missions certifiantes et projets personnels</p>
+        <div class="conveyor" aria-hidden="true"></div>
+        <div class="flight-status-bar">
+            <div class="ticker-text">
+                ÉTAT DU SYSTÈME : TOUS LES VOLETS AU VERT • PROJETS DÉPLOYÉS : 100 % • DESTINATION : EXCELLENCE
+                FRONT-END • PROCHAIN VOL : VOTRE PROJET ?
+            </div>
+        </div>
+        <!-- PROJET 1 : BOOKI -->
+        <article class="ticket">
+            <div class="stamp-finished">TERMINÉ</div>
+            <div class="ticket-visual">
+                <img src="../asset/images/booki.jpg" alt="Aperçu du site Booki">
+            </div>
+
+            <div class="ticket-body">
+                <div class="project-meta">
+                    <span>VOL BK-01</span>
+                    <span>CLASSE HTML/CSS</span>
+                </div>
+                <h2 class="project-title">BOOKI</h2>
+                <p class="project-desc">
+                    Intégration d'une maquette pour une plateforme de réservation d'hébergements.
+                    Site responsive (mobile-first) respectant scrupuleusement le design Figma.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">FLEXBOX</span>
+                </div>
+            </div>
+
+            <div class="ticket-stub">
+                <div class="stub-status">boarding</div>
+                <div class="barcode"></div>
+
+                <div class="actions">
+                    <a href="https://christophehascoet.github.io/booki/" target="_blank" class="btn-action btn-site">
+                        <span>VOL DIRECT</span> ↗
+                    </a>
+                    <a href="https://github.com/CHRISTOPHEHASCOET/booki" target="_blank" class="btn-action btn-code">
+                        <span>PLAN DE VOL</span> (REPO)
+                    </a>
+                </div>
+
+                <div class="stub-footer">
+                    <div class="gate-label">PORTE</div>
+                    <div class="gate-val">A1</div>
+                    <div class="stub-footer">
+                        <div class="gate-extra">DURÉE VOL : 2 mois</div>
+                    </div>
+                </div>
+                <!-- <div class="stamp-finished">TERMINÉ</div> -->
+            </div>
+        </article>
+
+        <!-- PROJET 2 : OHMYFOOD -->
+        <article class="ticket">
+            <div class="stamp-finished">TERMINÉ</div>
+            <div class="ticket-visual">
+                <img src="../asset/images/ohmyfood.jpg" alt="Aperçu OhMyFood">
+            </div>
+
+            <div class="ticket-body">
+                <div class="project-meta">
+                    <span>VOL OMF-02</span>
+                    <span>CLASSE ANIMATION</span>
+                </div>
+                <h2 class="project-title">OHMYFOOD</h2>
+                <p class="project-desc">
+                    Site "mobile-first" pour répertorier les menus de restaurants gastronomiques.
+                    Animations CSS avancées (loader, checkmark) sans JavaScript.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">SASS / SCSS</span>
+                    <span class="tech-badge">ANIMATIONS CSS</span>
+                    <span class="tech-badge">GIT</span>
+                </div>
+            </div>
+
+            <div class="ticket-stub">
+                <div class="stub-status">boarding</div>
+                <div class="barcode"></div>
+                <div class="actions">
+                    <a href="https://christophehascoet.github.io/ohmyfood/" target="_blank" class="btn-action btn-site">
+                        <span>VOL DIRECT</span> ↗
+                    </a>
+                    <a href="https://github.com/CHRISTOPHEHASCOET/ohmyfood" target="_blank" class="btn-action btn-code">
+                        <span>PLAN DE VOL</span> (REPO)
+                    </a>
+                </div>
+                <div class="stub-footer">
+                    <div class="gate-label">PORTE</div>
+                    <div class="gate-val">B2</div>
+                    <div class="stub-footer">
+                        <div class="gate-extra">DURÉE VOL :  1 mois</div>
+                    </div>
+                </div>
+                <!-- <div class="stamp-finished">TERMINÉ</div> -->
+            </div>
+        </article>
+
+        <!-- PROJET 3 : LA PANTHÈRE -->
+        <article class="ticket">
+            <div class="stamp-finished">TERMINÉ</div>
+            <div class="ticket-visual">
+                <img src="../asset/images/lapanthère.jpg" alt="Aperçu La Panthère">
+            </div>
+
+            <div class="ticket-body">
+                <div class="project-meta">
+                    <span>VOL LP-03</span>
+                    <span>CLASSE SEO</span>
+                </div>
+                <h2 class="project-title">LA PANTHÈRE</h2>
+                <p class="project-desc">
+                    Optimisation d'un site existant pour améliorer son référencement (SEO) et son accessibilité.
+                    Amélioration des performances et de la structure sémantique.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">SEO</span>
+                    <span class="tech-badge">ACCESSIBILITÉ (WCAG)</span>
+                    <span class="tech-badge">OPTIMISATION</span>
+                </div>
+            </div>
+
+            <div class="ticket-stub">
+                <div class="stub-status">boarding</div>
+                <div class="barcode"></div>
+                <div class="actions">
+                    <a href="https://christophehascoet.github.io/la-panth/" target="_blank" class="btn-action btn-site">
+                        <span>VOL DIRECT</span> ↗
+                    </a>
+                    <a href="https://github.com/CHRISTOPHEHASCOET/la-panth" target="_blank" class="btn-action btn-code">
+                        <span>PLAN DE VOL</span> (REPO)
+                    </a>
+                </div>
+                <div class="stub-footer">
+                    <div class="gate-label">PORTE</div>
+                    <div class="gate-val">C3</div>
+                    <div class="stub-footer">
+                        <div class="gate-extra">DURÉE VOL : 1 mois</div>
+                    </div>
+                </div>
+                <!-- <div class="stamp-finished">TERMINÉ</div> -->
+            </div>
+        </article>
+
+    </main>
+
+ 
+
+  <footer class="site-footer">
+    <section class="footer-inner" aria-label="Informations de bas de page">
+      <div class="footer-left-block">
+        <div class="runway-visual" aria-hidden="true">
+          <div class="runway-centerline"></div>
+          <div class="runway-lights">
+            <span class="runway-light"></span>
+            <span class="runway-light"></span>
+            <span class="runway-light"></span>
+            <span class="runway-light"></span>
+            <span class="runway-light"></span>
+          </div>
+          <p class="runway-label">RUNWAY 07L</p>
+          <p class="runway-code">07L</p>
+        </div>
+        <p class="piste-lights">
+          <span>&lt;&lt;&lt; ZONE SÉCURISÉE &gt;&gt;&gt;</span>
+          <span>FIN DE PARCOURS / TERMINAL</span>
+        </p>
+      </div>
+
+      <div class="footer-right-block">
+        <div class="status-row">
+          <span class="status-tag">SYSTEM ONLINE</span>
+          <span class="status-tag secondary">READY FOR TAKEOFF</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/CHRISTOPHEHASCOET" target="_blank" rel="noopener noreferrer"
+            aria-label="Aller vers mon profil GitHub (s'ouvre dans un nouvel onglet)">GitHub</a>
+          <a href="#" target="_blank" rel="noopener noreferrer"
+            aria-label="Aller vers mon profil LinkedIn (s'ouvre dans un nouvel onglet)">LinkedIn</a>
+          <span>© 2025 PILOTE DIGITAL — TOUS DROITS RÉSERVÉS</span>
+        </div>
+      </div>
+    </section>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/embarquement.js"></script>
+</body>
+
+</html>
