@@ -22,8 +22,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- Styles CSS -->
-  <link rel="stylesheet" href="css/depart.css">
+  <link rel="stylesheet" href="css/depart.css" />
   <link rel="stylesheet" href="css/normaliser.css">
+
+
 
   <title>Terminal Interactif</title>
 </head>
@@ -35,47 +37,49 @@
         <img src="asset/images/pilote-christophehascoet3.png" alt="Portrait de Christophe Hascoët" />
         <div class="logo-text-group">
           <span class="logo-title">FLIGHT</span>
-          <span class="flight-id">SYS: CH-2025</span>
+          <span class="flight-id">COMMANDANT DE BORD</span>
+          <!-- <span class="flight-id">SYS: CH-2025</span> -->
         </div>
       </a>
 
-      <!-- NOUVEAU : Horloge temps réel -->
-      <div class="realtime-clock" id="realtime-clock" aria-label="Heure UTC en temps réel">
-        --:--:--
-      </div>
 
-      <span class="plane-animated" id="plane" aria-hidden="true">✈</span>
+
+
       <nav class="nav-desktop" aria-label="Navigation principale">
-        <a href="index.html" class="nav-link cockpit-btn"
-          aria-label="Départs – Tableau principal de navigation" data-gate="A01">
+
+        <a href="index.html" class="nav-link cockpit-btn" data-gate="A01">
           <span class="gate-number">A01</span>
-          Départs
+          <span class="nav-label">HALL DES DÉPARTS</span>
         </a>
-        <a href="passeport.html" class="nav-link cockpit-btn" aria-label="Passeport – Projets de développement"
-          data-gate="B02">
+
+        <a href="passeport.html" class="nav-link cockpit-btn" data-gate="B02">
           <span class="gate-number">B02</span>
-          Passeport
+          <span class="nav-label">PASSEPORT DU PILOTE</span>
         </a>
-        <a href="embarquement.html" class="nav-link active cockpit-btn"
-          aria-label="Embarquement – Projets de développement" data-gate="C03">
+
+        <a href="embarquement.html" class="nav-link cockpit-btn" data-gate="C03">
           <span class="gate-number">C03</span>
-          Embarquement
+          <span class="nav-label">ZONE D’EMBARQUEMENT</span>
         </a>
-        <a href="case-studies.html" class="nav-link cockpit-btn"
-          aria-label="Plan de vol – Cahiers des charges et études de cas" data-gate="D04">
+
+        <a href="plan-de-vol.html" class="nav-link cockpit-btn" data-gate="D04">
           <span class="gate-number">D04</span>
-          Plan de vol
+          <span class="nav-label">PLAN DE VOL</span>
         </a>
-        <a href="html/profile.html" class="nav-link cockpit-btn" aria-label="Cockpit – Compétences et formations"
-          data-gate="E05">
+
+        <a href="profil.html" class="nav-link cockpit-btn" data-gate="E05">
           <span class="gate-number">E05</span>
-          Cockpit
+          <span class="nav-label">POSTE DE PILOTAGE</span>
         </a>
-        <a href="html/contact.html" class="nav-link cockpit-btn" aria-label="Tour de Contrôle – Contact" data-gate="F06">
+
+        <a href="contact.html" class="nav-link cockpit-btn" data-gate="F06">
           <span class="gate-number">F06</span>
-          Tour de Contrôle
+          <span class="nav-label">TOUR DE CONTRÔLE</span>
         </a>
       </nav>
+      <span class="plane-animated" id="plane" aria-hidden="true">✈</span>
+
+
   </header>
 
   <section class="doors-overlay" aria-hidden="true">
@@ -104,10 +108,14 @@
   <main>
     <section class="departures" aria-labelledby="departures-title">
       <header class="departures-header">
-        <!-- NOUVEAU TITRE ET TEXTE -->
-        <h1 id="departures-title">Tableau de Bord - Vols en Cours</h1>
+        <h1 id="departures-title">TERMINAL OPÉRATIONNEL VOLS NUMÉRIQUES</h1>
+        <div class="board-clock" aria-label="Heure UTC en temps réel">
+          <span class="clock-label">UTC</span>
+          <span id="realtime-clock">--:--:--</span>
+        </div>
         <p id="departures-intro">
-          Centre de contrôle des projets, plans de vol et compétences techniques actuellement en service.
+          Centre de contrôle des opérations numériques autorisées au départ.
+          Commandant de bord : Christophe Hascoët.
         </p>
       </header>
 
@@ -118,11 +126,11 @@
         <thead>
           <tr>
             <!-- NOUVEAUX EN-TÊTES DE COLONNES -->
-            <th scope="col" class="col-head col-vol">FLT</th>
-            <th scope="col" class="col-head col-dest">DEST</th>
-            <th scope="col" class="col-head col-time">ETD</th>
-            <th scope="col" class="col-head col-gate">GATE</th>
-            <th scope="col" class="col-head col-obs">STATUS</th>
+            <th scope="col" class="col-head col-vol">VOL</th>
+            <th scope="col" class="col-head col-dest">DESTINATION</th>
+            <th scope="col" class="col-head col-time">EMBARQUEMENT</th>
+            <th scope="col" class="col-head col-gate">PORTE</th>
+            <th scope="col" class="col-head col-obs">OBSRVATIONS</th>
           </tr>
         </thead>
         <tbody id="board-body">
@@ -156,9 +164,12 @@
       <div class="footer-right-block">
         <div class="status-row">
           <span class="status-tag">SYSTEM ONLINE</span>
-          <span class="status-tag secondary">READY FOR TAKEOFF</span>
+          <span class="status-tag secondary">AUTORISATION DE DÉCOLLAGE DISPONIBLE</span>
         </div>
         <div class="footer-links">
+          <a href="contact.html" class="status-tag secondary" aria-label="Aller vers la page de contact">
+            CONTACTER LA TOUR DE CONTRÔLE
+          </a>
           <a href="https://github.com/CHRISTOPHEHASCOET" target="_blank" rel="noopener noreferrer"
             aria-label="Aller vers mon profil GitHub (s'ouvre dans un nouvel onglet)">GitHub</a>
           <a href="#" target="_blank" rel="noopener noreferrer"
@@ -168,6 +179,7 @@
       </div>
     </section>
   </footer>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
