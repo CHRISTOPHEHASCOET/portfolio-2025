@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tableau de bord — CH‑2025</title>
+
+  <!-- Polices -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+
+  <style>
+    :root {
+      /* Palette aéroport/cockpit (tes couleurs) */
+      --primary: #0A0E27;
+      --secondary: #1A1F3A;
+      --door-background: #252B4B;
+      --door-gradient-top: #2D345A;
+      --accent: #8B1E3F;
+      --accent-bright: #00D9FF;
+      --text: #E0E6ED;
+      --text-secondary: #ADB5BD;
+
+      /* Dérivés */
+      --screen-bg: #05091F;
+      --panel-bg: #151C3B;
+      --panel-border: #343C6A;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.75);
+      --scanline-dark: rgba(0, 0, 0, 0.32);
+
+      --font-display: 'Oswald', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background:
+        radial-gradient(900px 600px at 10% 0%, rgba(0,217,255,0.15), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(139,30,63,0.25), transparent 65%),
+        linear-gradient(180deg, var(--primary) 0%, #05091B 40%, #040614 100%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+
+      /* scanlines */
+      /* background-image:
+        linear-gradient(rgba(18, 16, 16, 0) 50%, var(--scanline-dark) 50%),
+        linear-gradient(90deg, rgba(0,217,255,0.06), rgba(10,10,10,0.03), rgba(139,30,63,0.12)); */
+      background-size: 100% 3px, 4px 100%;
+      background-blend-mode: soft-light;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent-bright);
+      outline-offset: 3px;
+    }
+
+    /* ================== FMS TOP BAR ================== */
+    .flight-status-bar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 36px;
+      background: #020416;
+      border-bottom: 1px solid rgba(0,217,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      z-index: 1100;
+    }
+    .status-item span {
+      color: var(--accent-bright);
+    }
+
+    /* ================== HEADER NAV TERMINAL ================== */
+    .site-header {
+      position: fixed;
+      top: 36px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: linear-gradient(180deg, var(--secondary), #121730);
+      border-bottom: 2px solid var(--accent);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      color: var(--text);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,217,255,0.22);
+      background:
+        radial-gradient(circle at 0 0, rgba(0,217,255,0.26), transparent 55%),
+        rgba(2,6,23,0.95);
+    }
+
+    .nav-desktop {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+    .nav-gate {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(4,6,26,0.9);
+      border: 1px solid rgba(0,217,255,0.25);
+      color: var(--accent-bright);
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(0,217,255,0.7), transparent);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .nav-link:hover {
+      color: var(--text);
+      background: rgba(0,0,0,0.35);
+      transform: translateY(-1px);
+    }
+    .nav-link.active {
+      color: var(--accent-bright);
+      background: rgba(0,0,0,0.45);
+    }
+    .nav-link.active::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ================== LAYOUT ================== */
+    main {
+      max-width: 1200px;
+      margin: 120px auto 40px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, var(--door-gradient-top), var(--door-background));
+      border-radius: 10px;
+      border: 1px solid var(--panel-border);
+      position: relative;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(0,217,255,0.16), transparent 65%),
+        radial-gradient(800px 380px at 100% 0%, rgba(139,30,63,0.45), transparent 75%);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .panel > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .panel-header {
+      padding: 14px 18px 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.45);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+    }
+    .panel-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-secondary);
+    }
+    .panel-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .panel-status {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,217,255,0.4);
+      color: var(--accent-bright);
+      background: rgba(4,6,26,0.8);
+      white-space: nowrap;
+    }
+
+    .tagline {
+      padding: 0 18px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    /* HERO / TABLEAU DE BORD */
+    .hero-panel {
+      grid-column: span 12;
+    }
+    .hero-body {
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .hero-left {
+      max-width: 60%;
+    }
+    .hero-left h1 {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .hero-meta {
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    .hero-meta span {
+      color: var(--accent-bright);
+    }
+    .hero-right {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    .hero-gate {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(4, 6, 30, 0.9);
+      border: 1px solid rgba(0,217,255,0.35);
+      margin-bottom: 4px;
+    }
+    .hero-gate span:nth-child(2) {
+      color: var(--accent-bright);
+    }
+
+    /* INSTRUMENTS DE NAVIGATION (3 radars) */
+    .instruments-panel {
+      grid-column: span 12;
+    }
+    .instruments-body {
+      padding: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .radar-card {
+      background: rgba(5, 9, 30, 0.9);
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.5);
+      padding: 12px 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .radar-card h3 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .radar-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .radar-display {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(0,217,255,0.4);
+      position: relative;
+      background:
+        radial-gradient(circle at center, rgba(0,217,255,0.16) 0, rgba(5,9,31,1) 70%);
+      box-shadow: inset 0 0 28px rgba(0,0,0,0.85);
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .radar-sweep {
+      position: absolute;
+      inset: -18%;
+      background: conic-gradient(from 0deg, rgba(0,217,255,0.32), transparent 42%);
+      border-radius: 50%;
+      mix-blend-mode: screen;
+    }
+    .radar-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22C55E;
+      box-shadow: 0 0 12px rgba(34,197,94,0.9);
+    }
+    /* positions simplifiées */
+    .radar-dot.p1 { top: 20%; left: 65%; }
+    .radar-dot.p2 { top: 45%; left: 30%; }
+    .radar-dot.p3 { top: 60%; left: 70%; }
+    .radar-dot.p4 { top: 78%; left: 40%; }
+
+    .radar-tags {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* PLAN DE VOL — EXPÉRIENCES */
+    .flight-panel {
+      grid-column: span 12;
+    }
+    .flight-body {
+      padding: 18px 20px 20px;
+    }
+    .flight-entry {
+      position: relative;
+      margin-bottom: 18px;
+      padding-left: 22px;
+      border-left: 2px solid var(--accent-bright);
+    }
+    .flight-entry::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 10px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-bright);
+      background: var(--door-background);
+      box-shadow: 0 0 10px rgba(0,217,255,0.7);
+    }
+    .flight-date {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-bright);
+      margin-bottom: 4px;
+    }
+    .flight-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+    }
+    .flight-company {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .flight-text {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+    }
+
+    /* FORMATIONS */
+    .training-panel {
+      grid-column: span 12;
+    }
+    .training-body {
+      padding: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+    }
+    .training-card {
+      background: rgba(5, 9, 30, 0.9);
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.5);
+      padding: 14px 14px 12px;
+      position: relative;
+    }
+    .training-type {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .training-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .training-org {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .training-date {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-bright);
+    }
+
+    /* LANGUES & CENTRES D'INTÉRÊT */
+    .comms-panel {
+      grid-column: span 12;
+    }
+    .comms-body {
+      padding: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+    }
+    .comms-column-title {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+    .comms-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(5,9,30,0.9);
+      border: 1px solid rgba(0,0,0,0.5);
+      margin: 4px 4px 4px 0;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .comms-code {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-bright);
+    }
+
+    /* DONNÉES DE VOL */
+    .stats-panel {
+      grid-column: span 12;
+    }
+    .stats-body {
+      padding: 18px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 14px;
+    }
+    .stat-card {
+      background: rgba(5, 9, 30, 0.9);
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.6);
+      padding: 12px 10px;
+      text-align: center;
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      color: var(--accent-bright);
+    }
+
+    /* CTA PRÊT POUR LE DÉCOLLAGE */
+    .cta-panel {
+      grid-column: span 12;
+      background:linear-gradient(180deg, var(--door-gradient-top), var(--door-background));
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.7);
+      padding: 26px 20px 24px;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .cta-text {
+      max-width: 70ch;
+      margin: 0 auto 18px;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: none;
+      background: #020617;
+      color: var(--accent-bright);
+      font-family: var(--font-display);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 0 24px rgba(0,0,0,0.7);
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+    .cta-button:hover {
+      transform: translateY(-2px);
+      background: #05091F;
+      box-shadow: 0 0 30px rgba(0,0,0,0.9);
+    }
+
+    /* FOOTER façon fin de piste */
+    footer {
+      margin-top: 16px;
+      background: linear-gradient(180deg, var(--secondary), #050818);
+      border-top: 2px solid var(--accent);
+      padding: 26px 20px 16px;
+      color: var(--text-secondary);
+      box-shadow: 0 -12px 40px rgba(0,0,0,0.85);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto 14px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+    }
+    .footer-title {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-bright);
+      margin-bottom: 6px;
+      font-size: 0.75rem;
+    }
+    .footer-inner p,
+    .footer-inner a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.78rem;
+    }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px dashed rgba(173,181,189,0.4);
+      padding-top: 8px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      main { margin-top: 140px; }
+      .instruments-body { grid-template-columns: 1fr; }
+      .training-body { grid-template-columns: 1fr; }
+      .comms-body { grid-template-columns: 1fr; }
+      .stats-body { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .hero-left { max-width: 100%; }
+      .hero-body { flex-direction: column; align-items: flex-start; }
+      .hero-right { text-align: left; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BARRE FMS (infos vol) -->
+  <div class="flight-status-bar">
+    <div class="status-item">VOL&nbsp;<span>CH‑2025</span></div>
+    <div class="status-item">SECTEUR&nbsp;<span>FR–EU</span></div>
+    <div class="status-item">ALT&nbsp;<span>FL350</span></div>
+    <div class="status-item">SPD&nbsp;<span>M0.82</span></div>
+    <div class="status-item">AP&nbsp;<span>ENGAGED</span></div>
+  </div>
+
+  <!-- NAV TERMINAL -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="accueil2.html" class="logo">CH</a>
+      <nav class="nav-desktop" aria-label="Navigation principale">
+        <a href="accueil2.html" class="nav-link">
+          <span>Accueil</span>
+          <span class="nav-gate">T1 • A01</span>
+        </a>
+        <a href="about3.html" class="nav-link">
+          <span>À propos</span>
+          <span class="nav-gate">T1 • B02</span>
+        </a>
+        <a href="projects1.html" class="nav-link">
+          <span>Projets</span>
+          <span class="nav-gate">T2 • C03</span>
+        </a>
+        <a href="case-studies.html" class="nav-link">
+          <span>Études de cas</span>
+          <span class="nav-gate">T2 • D04</span>
+        </a>
+        <a href="profil.html" class="nav-link active" aria-current="page">
+          <span>Profil / Cockpit</span>
+          <span class="nav-gate">T3 • P05</span>
+        </a>
+        <a href="contact.html" class="nav-link">
+          <span>Contact</span>
+          <span class="nav-gate">T3 • CTL</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO : TABLEAU DE BORD -->
+    <section class="panel hero-panel">
+      <header class="panel-header">
+        <div>
+          <p class="panel-kicker">VOL CH‑2025 • PROFIL PILOTE</p>
+          <h2 class="panel-title">TABLEAU DE BORD</h2>
+        </div>
+        <p class="panel-status">Statut : opérationnel</p>
+      </header>
+      <div class="hero-body">
+        <div class="hero-left">
+          <h1>COCKPIT</h1>
+          <p class="hero-meta">
+            Rôle&nbsp;: <span>Commandant de bord / Dev fullstack</span><br>
+            Mission&nbsp;: <span>Assurer le bon décollage de vos projets web & mobile</span>
+          </p>
+        </div>
+        <div class="hero-right">
+          <div class="hero-gate">
+            <span>Tableau de bord</span>
+            <span>Gate P05</span>
+          </div>
+          <span>Terminal 3 — Section cockpit</span>
+        </div>
+      </div>
+      <p class="tagline">// Cette section regroupe les instruments de navigation, le plan de vol, les communications et les données de mission du pilote.</p>
+    </section>
+
+    <!-- INSTRUMENTS : 3 RADARS DE COMPÉTENCES -->
+    <section class="panel instruments-panel">
+      <header class="panel-header">
+        <div>
+          <h2 class="panel-title">Instruments de Navigation Display</h2>
+        </div>
+        <p class="panel-status">Calibration : optimale</p>
+      </header>
+      <div class="instruments-body">
+        <!-- Radar Pilotage -->
+        <article class="radar-card">
+          <h3>Radar de pilotage</h3>
+          <p>Soft skills : communication, gestion, posture.</p>
+          <div class="radar-display">
+            <div class="radar-sweep"></div>
+            <span class="radar-dot p1"></span>
+            <span class="radar-dot p2"></span>
+            <span class="radar-dot p3"></span>
+            <span class="radar-dot p4"></span>
+          </div>
+          <p class="radar-tags">&gt; Communication • Leadership • Esprit d’équipe • Résolution de problèmes</p>
+        </article>
+
+        <!-- Radar Systèmes -->
+        <article class="radar-card">
+          <h3>Radar systèmes</h3>
+          <p>Hard skills : stack front & back.</p>
+          <div class="radar-display">
+            <div class="radar-sweep"></div>
+            <span class="radar-dot p1"></span>
+            <span class="radar-dot p2"></span>
+            <span class="radar-dot p3"></span>
+            <span class="radar-dot p4"></span>
+          </div>
+          <p class="radar-tags">&gt; HTML/CSS • JavaScript • React • Laravel / API</p>
+        </article>
+
+        <!-- Radar Mission -->
+        <article class="radar-card">
+          <h3>Radar mission</h3>
+          <p>Mad skills : contexte, expérience terrain.</p>
+          <div class="radar-display">
+            <div class="radar-sweep"></div>
+            <span class="radar-dot p1"></span>
+            <span class="radar-dot p2"></span>
+            <span class="radar-dot p3"></span>
+            <span class="radar-dot p4"></span>
+          </div>
+          <p class="radar-tags">&gt; Service client • Environnements extrêmes • Animation • Veille & écriture</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PLAN DE VOL — EXPÉRIENCES -->
+    <section class="panel flight-panel">
+      <header class="panel-header">
+        <div>
+          <p class="panel-kicker">Plan de vol</p>
+          <h2 class="panel-title">Flight log — expériences</h2>
+        </div>
+        <p class="panel-status">Historique de mission</p>
+      </header>
+      <div class="flight-body">
+        <article class="flight-entry">
+          <p class="flight-date">2023 — Présent // Route : Lead UX/UI</p>
+          <h3 class="flight-title">Chef de cabine digital — Agence XYZ</h3>
+          <p class="flight-company">Design systems • UX • Intégration front (React/GSAP)</p>
+          <p class="flight-text">
+            Pilotage de design systems complexes, optimisation de l’expérience passager et mise en place
+            d’animations maîtrisées pour des interfaces premium.
+          </p>
+        </article>
+
+        <article class="flight-entry">
+          <p class="flight-date">2021 — 2023 // Route : Développeur</p>
+          <h3 class="flight-title">Officier pilote de ligne — Startup tech</h3>
+          <p class="flight-company">Infra front/back • APIs • Données temps réel</p>
+          <p class="flight-text">
+            Maintenance en plein vol d’APIs critiques, gestion de trafic utilisateur et sécurisation
+            des parcours sur des plateformes en production.
+          </p>
+        </article>
+
+        <article class="flight-entry">
+          <p class="flight-date">2019 — 2021 // Route : Web design</p>
+          <h3 class="flight-title">École de pilotage — Studio créatif</h3>
+          <p class="flight-company">Maquettes • intégration • identité visuelle</p>
+          <p class="flight-text">
+            Mise en place de gabarits responsives, création de chartes graphiques et premiers vols en autonomie
+            sur des projets complets de A à Z.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FORMATIONS -->
+    <section class="panel training-panel">
+      <header class="panel-header">
+        <div>
+          <h2 class="panel-title">Pre-Flight Checklist / Formations</h2>
+        </div>
+        <p class="panel-status">Dossiers à jour</p>
+      </header>
+      <div class="training-body">
+        <article class="training-card">
+          <p class="training-type">Titre pro NV5</p>
+          <h3 class="training-name">Développeur Web PHP</h3>
+          <p class="training-org">Cursus dédié back-end (Laravel) & front réactif.</p>
+          <p class="training-date">2023</p>
+        </article>
+
+        <article class="training-card">
+          <p class="training-type">Parcours NV5</p>
+          <h3 class="training-name">Développeur Web & Mobile</h3>
+          <p class="training-org">Projets guidés, intégration, animations & SEO.</p>
+          <p class="training-date">2021 — 2022</p>
+        </article>
+
+        <article class="training-card">
+          <p class="training-type">Mention compl. NV3</p>
+          <h3 class="training-name">Barman / service haut de gamme</h3>
+          <p class="training-org">Hôtellerie/restauration premium, relation client.</p>
+          <p class="training-date">2010</p>
+        </article>
+
+        <article class="training-card">
+          <p class="training-type">Parcours initial</p>
+          <h3 class="training-name">CAP / BEP commerciaux</h3>
+          <p class="training-org">Bases administratives et vente / conseil client.</p>
+          <p class="training-date">1990 — 1992</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- LANGUES & CENTRES D'INTÉRÊT -->
+    <section class="panel comms-panel">
+      <header class="panel-header">
+        <div>
+          <h2 class="panel-title">Systèmes de Communication & Signaux</h2>
+        </div>
+        <p class="panel-status">Canaux actifs</p>
+      </header>
+      <div class="comms-body">
+        <div>
+          <p class="comms-column-title">Canaux linguistiques</p>
+          <div class="comms-tag">
+            <span class="comms-code">FR</span>
+            <span>canal principal</span>
+          </div>
+          <div class="comms-tag">
+            <span class="comms-code">EN</span>
+            <span>Anglais canal secondaire (en préparation)</span>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="comms-column-title"> INTÉRÊTS DE VOL</h2>
+          <div class="comms-tag">
+            <span class="comms-code">TECH</span>
+            <span>Veille technologique (web, IA, outils front)</span>
+          </div>
+          <div class="comms-tag">
+            <span class="comms-code">TRAVEL</span>
+            <span>Tourisme & découverte</span>
+          </div>
+          <div class="comms-tag">
+            <span class="comms-code">WEB</span>
+            <span>Expérimentations web & UX</span>
+          </div>
+          <div class="comms-tag">
+            <span class="comms-code">WRITE</span>
+            <span>Écriture (projets narratifs / roman)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DONNÉES DE VOL -->
+    <section class="panel stats-panel">
+      <header class="panel-header">
+        <div>
+          <p class="panel-kicker">Télémetrie de mission</p>
+          <h2 class="panel-title">Données de vol</h2>
+        </div>
+        <p class="panel-status">Signal : stable</p>
+      </header>
+      <div class="stats-body">
+        <article class="stat-card">
+          <p class="stat-label">Projets livrés</p>
+          <p class="stat-value">41</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Années de vol</p>
+          <p class="stat-value">4</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Clients accompagnés</p>
+          <p class="stat-value">25</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Commits Git</p>
+          <p class="stat-value">&gt;1200</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA PRÊT POUR LE DÉCOLLAGE ? -->
+    <section class="cta-panel">
+      <h2 class="cta-title">PRÊT POUR LE DÉCOLLAGE ?</h2>
+      <p class="cta-text">
+        Embarquons ensemble pour votre prochain projet ambitieux. Je suis disponible pour des missions
+        de conseil, de développement ou de formation.
+      </p>
+      <a href="contact.html" class="cta-button">DEMANDER AUTORISATION DE VOL</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-title">Ground_control</p>
+        <p>Email : flight-control@ch‑2025.dev</p>
+        <p>Base : Lorient, France</p>
+      </div>
+      <div>
+        <p class="footer-title">Nav_channels</p>
+        <p><a href="https://github.com/CHRISTOPHEHASCOET" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        <p><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+      </div>
+      <div>
+        <p class="footer-title">Flight_docs</p>
+        <p>CV PDF disponible sur demande</p>
+        <p>Portfolio immersif — Thème aéroport</p>
+      </div>
+    </div>
+    <p class="footer-bottom">STOP // END OF RUNWAY // T3 • ZONE COCKPIT</p>
+  </footer>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Radar sweep animation (tous les radars)
+      gsap.utils.toArray(".radar-display .radar-sweep").forEach((sweep) => {
+        gsap.to(sweep, {
+          rotation: 360,
+          duration: 5,
+          repeat: -1,
+          ease: "none",
+          transformOrigin: "50% 50%"
+        });
+      });
+
+      // Reveal panels
+      gsap.utils.toArray(".panel").forEach(panel => {
+        gsap.from(panel, {
+          opacity: 0,
+          y: 20,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: panel,
+            start: "top 85%"
+          }
+        });
+      });
+
+      // Flight entries
+      gsap.utils.toArray(".flight-entry").forEach(entry => {
+        gsap.from(entry, {
+          x: -30,
+          opacity: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: entry,
+            start: "top 85%"
+          }
+        });
+      });
+
+      // Training cards
+      gsap.utils.toArray(".training-card").forEach((card, i) => {
+        gsap.from(card, {
+          y: 24,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          delay: i * 0.05,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%"
+          }
+        });
+      });
+
+      // Comms tags
+      gsap.utils.toArray(".comms-tag").forEach((tag, i) => {
+        gsap.from(tag, {
+          y: 12,
+          opacity: 0,
+          duration: 0.4,
+          ease: "power2.out",
+          delay: i * 0.03,
+          scrollTrigger: {
+            trigger: tag,
+            start: "top 92%"
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
