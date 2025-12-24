@@ -7,18 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Métadonnées SEO -->
-  <meta name="description" content="Terminal interactif de Christophe Hascoët. Découvrez mes projets de développement web, mes compétences et mon parcours." />
+  <meta name="description"
+    content="Terminal interactif de Christophe Hascoët. Découvrez mes projets de développement web, mes compétences et mon parcours." />
   <meta property="og:title" content="C.Hascoët — Terminal Interactif" />
   <meta property="og:description" content="Portfolio de Christophe Hascoët, développeur web." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://votre-domaine.com" />
   <meta property="og:image" content="https://votre-domaine.com/assets/images/preview.jpg" />
-  
- <!-- Polices -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- Styles CSS -->
   <link rel="stylesheet" href="css/passeport.css" />
@@ -30,51 +31,54 @@
 <body>
   <header class="site-header">
     <div class="header-inner" id="nav-container">
-      <a href="index.html" class="logo" id="logo-ref" aria-label="Accueil">
+      <a href="index.html" class="logo" id="logo-ref" aria-label="Terminal principal">
         <img src="asset/images/pilote-christophehascoet3.png" alt="Portrait de Christophe Hascoët" />
         <div class="logo-text-group">
-          <span class="logo-title">FLIGHT</span>
-          <span class="flight-id">SYS: CH-2025</span>
+          <p class="logo-terminal">TERMINAL CH-2025</p>
+          <p class="logo-ops">OPS : COMMANDANT DE BORD</p>
         </div>
       </a>
 
-      <!-- NOUVEAU : Horloge temps réel -->
-      <div class="realtime-clock" id="realtime-clock" aria-label="Heure UTC en temps réel">
-        --:--:--
-      </div>
-
-      <span class="plane-animated" id="plane" aria-hidden="true">✈</span>
       <nav class="nav-desktop" aria-label="Navigation principale">
+
         <a href="index.html" class="nav-link cockpit-btn" data-gate="A01">
           <span class="gate-number">A01</span>
-          Départs
+          <span class="nav-label">HALL DES DÉPARTS</span>
         </a>
+
         <a href="passeport.html" class="nav-link cockpit-btn" data-gate="B02">
           <span class="gate-number">B02</span>
-          Passeport
+          <span class="nav-label">PASSEPORT DU PILOTE</span>
         </a>
+
         <a href="embarquement.html" class="nav-link cockpit-btn" data-gate="C03">
           <span class="gate-number">C03</span>
-          Embarquement
+          <span class="nav-label">ZONE D’EMBARQUEMENT</span>
         </a>
-        <a href="case-studies.html" class="nav-link cockpit-btn" data-gate="D04">
+
+        <a href="plan-de-vol.html" class="nav-link cockpit-btn" data-gate="D04">
           <span class="gate-number">D04</span>
-          Plan de vol
+          <span class="nav-label">PLAN DE VOL</span>
         </a>
-        <a href="profile.html" class="nav-link cockpit-btn" data-gate="E05">
+
+        <a href="departure1.html" class="nav-link cockpit-btn" data-gate="E05">
           <span class="gate-number">E05</span>
-          Cockpit
+          <span class="nav-label">POSTE DE PILOTAGE</span>
         </a>
+
         <a href="contact.html" class="nav-link cockpit-btn" data-gate="F06">
           <span class="gate-number">F06</span>
-          Tour de Contrôle
+          <span class="nav-label">TOUR DE CONTRÔLE</span>
         </a>
       </nav>
+      <span class="plane-animated" id="plane" aria-hidden="true">✈</span>
+
+
   </header>
 
-  
 
- 
+
+
   <footer class="site-footer">
     <section class="footer-inner" aria-label="Informations de bas de page">
       <div class="footer-left-block">
@@ -99,9 +103,12 @@
       <div class="footer-right-block">
         <div class="status-row">
           <span class="status-tag">SYSTEM ONLINE</span>
-          <span class="status-tag secondary">READY FOR TAKEOFF</span>
+          <span class="status-tag secondary">AUTORISATION DE DÉCOLLAGE DISPONIBLE</span>
         </div>
         <div class="footer-links">
+          <a href="contact.html" class="status-tag secondary" aria-label="Aller vers la page de contact">
+            CONTACTER LA TOUR DE CONTRÔLE
+          </a>
           <a href="https://github.com/CHRISTOPHEHASCOET" target="_blank" rel="noopener noreferrer"
             aria-label="Aller vers mon profil GitHub (s'ouvre dans un nouvel onglet)">GitHub</a>
           <a href="#" target="_blank" rel="noopener noreferrer"

@@ -111,6 +111,23 @@ main {
   /* Espace pour le header fixe */
 }
 
+/* =========================================================
+   CONTAINER MAIN
+   ========================================================= */
+main.container {
+  flex: 1;
+  padding-top: 140px;
+  padding-bottom: 80px;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 /* ==========================================================================
    4. HEADER & NAVIGATION
    ========================================================================== */
@@ -137,6 +154,26 @@ main {
   color: #fff;
 }
 
+.logo-text-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-terminal {
+  font-family: var(--font-oswald);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: var(--text);
+}
+
+.logo-ops {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+}
+
 .flight-id {
   font-family: var(--font-mono);
   font-size: 0.6rem;
@@ -149,16 +186,20 @@ main {
 /* Avion animé */
 .plane-animated {
   position: absolute;
-  left: 140px;
-  /* Décalé à gauche pour ne pas cacher les boutons */
-  top: 50%;
+  top: 100%;
+  margin-top: 6px;
+  left: 180px;
   transform: translateY(-50%);
   color: var(--warning);
   font-size: 1.2rem;
-  z-index: 5;
-  /* Z-index réduit pour être DERRIÈRE les boutons */
   pointer-events: none;
   filter: drop-shadow(0 0 5px var(--warning));
+  z-index: 1;
+  /* DERRIÈRE la nav */
+  opacity: 0.35;
+  /* plus discret */
+  font-size: 1rem;
+  filter: none;
 }
 
 .trail {
@@ -171,15 +212,17 @@ main {
   z-index: 9;
 }
 
-nav-desktop {
+
+.nav-desktop {
   display: flex;
   gap: 8px;
 }
 
 /* Bouton cockpit */
 .cockpit-btn {
-  color: var(--text-dim);
-  padding: 0.5rem 0.8rem;
+  color: var(--text);
+  font-weight: 700;
+  padding: 0.75rem 1.1rem;
   text-transform: uppercase;
   font-size: 0.85rem;
   font-family: var(--font-oswald);
@@ -198,18 +241,20 @@ nav-desktop {
 .gate-number {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--accent-bright);
   min-width: 36px;
   text-align: center;
   border-right: 1px solid rgba(255, 59, 59, 0.2);
   padding-right: 6px;
+
 }
 
 /* Effet de pression au survol */
 .cockpit-btn:hover {
-  color: #fff;
-  border-color: var(--accent-bright);
+  color: var(--text);
+  font-weight: bold;
+  border-color: var(--accent);
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(139, 30, 63, 0.15);
 }
@@ -217,7 +262,7 @@ nav-desktop {
 .realtime-clock {
   font-family: var(--font-mono);
   font-size: 1rem;
-  color: var(--warning);
+  color: var(--bg-gradient);
   background: rgba(0, 0, 0, 0.3);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
@@ -231,17 +276,26 @@ nav-desktop {
   gap: 10px;
 }
 
+.nav-label {
+  font-family: var(--font-oswald);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
 .nav-link {
-  color: var(--text-dim);
+  color: var(--text);
   padding: 0.5rem 0.8rem;
   text-transform: uppercase;
   font-size: 0.85rem;
+  font-weight: bold;
   font-family: var(--font-oswald);
   letter-spacing: 1px;
   position: relative;
   transition: all 0.2s ease;
   background: linear-gradient(180deg, #0f1630 0%, #0a0e27 100%);
-  border: 1px solid rgba(255, 59, 59, 0.3);
+  border: 1px solid rgba(255, 59, 59, 0.2);
+  box-shadow: none;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -250,12 +304,27 @@ nav-desktop {
   /* Boutons AU-DESSUS de l'avion */
 }
 
-.nav-link:hover {
-  color: #fff;
+.nav-link:hover .nav-link {
+  color: var(--text);
+  font-weight: bold;
   border-color: var(--accent-bright);
   background: linear-gradient(180deg, #141d3b 0%, #0f1630 100%);
   box-shadow: 0 0 8px rgba(255, 59, 59, 0.2);
 }
+
+.nav-link:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 6px rgba(139, 30, 63, 0.25);
+  background: linear-gradient(180deg, #141d3b 0%, #0f1630 100%);
+
+}
+
+.nav-desktop,
+.logo {
+  position: relative;
+  z-index: 5;
+}
+
 
 /* ==========================================================================
    7. FOOTER : PISTE DE NUIT
@@ -340,7 +409,7 @@ nav-desktop {
   animation-duration: 1.9s;
 }
 
-status-row {
+.status-row {
   display: flex;
   gap: 0.6rem;
   justify-content: flex-end;

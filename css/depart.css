@@ -110,204 +110,6 @@
     padding-top: 90px;
     /* Espace pour le header fixe */
   }
-
-  /* ==========================================================================
-   4. HEADER & NAVIGATION
-   ========================================================================== */
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .logo img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px solid var(--accent-bright);
-    object-fit: cover;
-  }
-
-  .logo-title {
-    font-family: var(--font-oswald);
-    font-weight: 700;
-    font-size: 1.8rem;
-    line-height: 1;
-    color: #fff;
-  }
-
-  .logo-text-group {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
-  }
-
-  .logo-terminal {
-    font-family: var(--font-oswald);
-    font-size: 0.9rem;
-    letter-spacing: 0.2em;
-    color: var(--text);
-  }
-
-  .logo-ops {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    color: var(--text-dim);
-  }
-
-  .flight-id {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: var(--accent-bright);
-    letter-spacing: 2px;
-    margin-top: 4px;
-    display: block;
-  }
-
-  /* Avion animé */
-  .plane-animated {
-    position: absolute;
-    top: 100%;
-    margin-top: 6px;
-    left: 180px;
-    transform: translateY(-50%);
-    color: var(--warning);
-    font-size: 1.2rem;
-    pointer-events: none;
-    filter: drop-shadow(0 0 5px var(--warning));
-    z-index: 1;
-    /* DERRIÈRE la nav */
-    opacity: 0.35;
-    /* plus discret */
-    font-size: 1rem;
-    filter: none;
-  }
-
-  .trail {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9;
-  }
-
-  /* 
-  .nav-desktop {
-    display: flex;
-    gap: 8px;
-  } */
-
-  /* Bouton cockpit */
-  .cockpit-btn {
-    color: var(--text);
-    font-weight: 700;
-    padding: 0.75rem 1.1rem;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    font-family: var(--font-oswald);
-    letter-spacing: 1px;
-    position: relative;
-    transition: all 0.2s ease;
-    background: linear-gradient(180deg, #0f1630 0%, #0a0e27 100%);
-    border: 1px solid rgba(255, 59, 59, 0.2);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  /* Numéro de porte dans le bouton */
-  .gate-number {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: var(--accent-bright);
-    min-width: 36px;
-    text-align: center;
-    border-right: 1px solid rgba(255, 59, 59, 0.2);
-    padding-right: 6px;
-
-  }
-
-  /* Effet de pression au survol */
-  .cockpit-btn:hover {
-    color: var(--text);
-    font-weight: bold;
-    border-color: var(--accent);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(139, 30, 63, 0.15);
-  }
-
-  .realtime-clock {
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    color: var(--bg-gradient);
-    background: rgba(0, 0, 0, 0.3);
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    border: 1px solid rgba(250, 204, 21, 0.3);
-    letter-spacing: 1px;
-    white-space: nowrap;
-  }
-
-  .nav-desktop {
-    display: flex;
-    gap: 10px;
-  }
-
-  .nav-label {
-    font-family: var(--font-oswald);
-    font-size: 0.85rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
-  .nav-link {
-    color: var(--text);
-    padding: 0.5rem 0.8rem;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    font-weight: bold;
-    font-family: var(--font-oswald);
-    letter-spacing: 1px;
-    position: relative;
-    transition: all 0.2s ease;
-    background: linear-gradient(180deg, #0f1630 0%, #0a0e27 100%);
-    border: 1px solid rgba(255, 59, 59, 0.2);
-    box-shadow: none;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    z-index: 10;
-    /* Boutons AU-DESSUS de l'avion */
-  }
-
-  .nav-link:hover .nav-link {
-    color: var(--text);
-    font-weight: bold;
-    border-color: var(--accent-bright);
-    background: linear-gradient(180deg, #141d3b 0%, #0f1630 100%);
-    box-shadow: 0 0 8px rgba(255, 59, 59, 0.2);
-  }
-
-  .nav-link:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 6px rgba(139, 30, 63, 0.25);
-    background: linear-gradient(180deg, #141d3b 0%, #0f1630 100%);
-
-  }
-
-  .nav-desktop,
-  .logo {
-    position: relative;
-    z-index: 5;
-  }
-
   /* ==========================================================================
    5. PORTE D'EMBARQUEMENT (INTRO)
    ========================================================================== */
@@ -427,6 +229,205 @@
       opacity: 0.2;
     }
   }
+
+  /* ==========================================================================
+   4. HEADER & NAVIGATION
+   ========================================================================== */
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .logo img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-bright);
+    object-fit: cover;
+  }
+
+  .logo-title {
+    font-family: var(--font-oswald);
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 1;
+    color: #fff;
+  }
+
+  .logo-text-group {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .logo-terminal {
+    font-family: var(--font-oswald);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    color: var(--text);
+  }
+
+  .logo-ops {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+  }
+
+  .flight-id {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--accent-bright);
+    letter-spacing: 2px;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* Avion animé */
+  .plane-animated {
+    position: absolute;
+    top: 100%;
+    margin-top: 6px;
+    left: 180px;
+    transform: translateY(-50%);
+    color: var(--warning);
+    font-size: 1.2rem;
+    pointer-events: none;
+    filter: drop-shadow(0 0 5px var(--warning));
+    z-index: 1;
+    /* DERRIÈRE la nav */
+    opacity: 0.35;
+    /* plus discret */
+    font-size: 1rem;
+    filter: none;
+  }
+
+  .trail {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9;
+  }
+
+  
+  .nav-desktop {
+    display: flex;
+    gap: 8px;
+  } 
+
+  /* Bouton cockpit */
+  .cockpit-btn {
+    color: var(--text);
+    font-weight: 700;
+    padding: 0.75rem 1.1rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-family: var(--font-oswald);
+    letter-spacing: 1px;
+    position: relative;
+    transition: all 0.2s ease;
+    background: linear-gradient(180deg, #0f1630 0%, #0a0e27 100%);
+    border: 1px solid rgba(255, 59, 59, 0.2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Numéro de porte dans le bouton */
+  .gate-number {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent-bright);
+    min-width: 36px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 59, 59, 0.2);
+    padding-right: 6px;
+
+  }
+
+  /* Effet de pression au survol */
+  .cockpit-btn:hover {
+    color: var(--text);
+    font-weight: bold;
+    border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(139, 30, 63, 0.15);
+  }
+
+  .realtime-clock {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--bg-gradient);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(250, 204, 21, 0.3);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  /* .nav-desktop {
+    display: flex;
+    gap: 10px;
+  } */
+
+  .nav-label {
+    font-family: var(--font-oswald);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .nav-link {
+    color: var(--text);
+    padding: 0.5rem 0.8rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: bold;
+    font-family: var(--font-oswald);
+    letter-spacing: 1px;
+    position: relative;
+    transition: all 0.2s ease;
+    background: linear-gradient(180deg, #0f1630 0%, #0a0e27 100%);
+    border: 1px solid rgba(255, 59, 59, 0.2);
+    box-shadow: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 10;
+    /* Boutons AU-DESSUS de l'avion */
+  }
+
+  .nav-link:hover .nav-link {
+    color: var(--text);
+    font-weight: bold;
+    border-color: var(--accent-bright);
+    background: linear-gradient(180deg, #141d3b 0%, #0f1630 100%);
+    box-shadow: 0 0 8px rgba(255, 59, 59, 0.2);
+  }
+
+  .nav-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 6px rgba(139, 30, 63, 0.25);
+    background: linear-gradient(180deg, #141d3b 0%, #0f1630 100%);
+
+  }
+
+  .nav-desktop,
+  .logo {
+    position: relative;
+    z-index: 5;
+  }
+
+
 
   /* ==========================================================================
    6. SECTION PRINCIPALE : TABLEAU DES DÉPARTS
@@ -855,7 +856,6 @@
     }
   }
 
-  /* Ajoute ces styles à la fin de ton fichier CSS */
 
   /* ==========================================================================
    AMÉLIORATIONS DE PERFORMANCE ET ACCESSIBILITÉ
