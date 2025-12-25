@@ -25,56 +25,53 @@
   <link rel="stylesheet" href="css/depart.css" />
   <link rel="stylesheet" href="css/normaliser.css">
 
-
-
   <title>Terminal Interactif</title>
 </head>
 
 <body>
   <header class="site-header">
     <div class="header-inner" id="nav-container">
-      <a href="index.html" class="logo" id="logo-ref" aria-label="Accueil">
+      <a href="index.html" class="logo" id="logo-ref" aria-label="Terminal principal">
         <img src="asset/images/pilote-christophehascoet3.png" alt="Portrait de Christophe Hascoët" />
         <div class="logo-text-group">
-          <span class="logo-title">FLIGHT</span>
-          <span class="flight-id">COMMANDANT DE BORD</span>
-          <!-- <span class="flight-id">SYS: CH-2025</span> -->
+          <p class="logo-terminal">TERMINAL CH-2025</p>
+          <p class="logo-ops">OPS : COMMANDANT DE BORD</p>
         </div>
       </a>
 
       <nav class="nav-desktop" aria-label="Navigation principale">
 
-        <a href="index.html" class="nav-link" data-gate="A01">
+        <a href="index.html" class="nav-link cockpit-btn" data-gate="A01">
           <span class="gate-number">A01</span>
-          <span class="nav-label">DÉPARTS</span>
+          <span class="nav-label">HALL DES DÉPARTS</span>
         </a>
 
-        <a href="passeport.html" class="nav-link" data-gate="B02">
+        <a href="passeport.html" class="nav-link cockpit-btn" data-gate="B02">
           <span class="gate-number">B02</span>
-          <span class="nav-label">PASSEPORT</span>
+          <span class="nav-label">PASSEPORT DU PILOTE</span>
         </a>
 
-        <a href="embarquement.html" class="nav-link" data-gate="C03">
+        <a href="embarquement.html" class="nav-link cockpit-btn" data-gate="C03">
           <span class="gate-number">C03</span>
-          <span class="nav-label">EMBARQUEMENT</span>
+          <span class="nav-label">ZONE D’EMBARQUEMENT</span>
         </a>
 
-        <a href="plan-de-vol.html" class="nav-link" data-gate="D04">
+        <a href="plan-de-vol.html" class="nav-link cockpit-btn" data-gate="D04">
           <span class="gate-number">D04</span>
           <span class="nav-label">PLAN DE VOL</span>
         </a>
 
-        <a href="profil.html" class="nav-link" data-gate="E05">
+        <a href="departure1.html" class="nav-link cockpit-btn" data-gate="E05">
           <span class="gate-number">E05</span>
-          <span class="nav-label">COCKPIT</span>
+          <span class="nav-label">POSTE DE PILOTAGE</span>
         </a>
 
-        <a href="contact.html" class="nav-link" data-gate="F06">
+        <a href="contact.html" class="nav-link cockpit-btn" data-gate="F06">
           <span class="gate-number">F06</span>
           <span class="nav-label">TOUR DE CONTRÔLE</span>
         </a>
-
       </nav>
+      <span class="plane-animated" id="plane" aria-hidden="true">✈</span>
 
 
   </header>
@@ -106,10 +103,6 @@
     <section class="departures" aria-labelledby="departures-title">
       <header class="departures-header">
         <h1 id="departures-title">TERMINAL OPÉRATIONNEL VOLS NUMÉRIQUES</h1>
-        <div class="board-clock" aria-label="Heure UTC en temps réel">
-          <span class="clock-label">UTC</span>
-          <span id="realtime-clock">--:--:--</span>
-        </div>
         <p id="departures-intro">
           Centre de contrôle des opérations numériques autorisées au départ.
           Commandant de bord : Christophe Hascoët.
@@ -117,14 +110,21 @@
       </header>
 
       <table class="board" aria-describedby="departures-intro">
+        <div class="board-clock" aria-label="Heure UTC en temps réel">
+              <span class="clock-label">UTC</span>
+              <span id="realtime-clock">--:--:--</span>
+            </div>
         <caption class="visually-hidden">
           Tableau de bord présentant mes missions, compétences et statuts.
         </caption>
         <thead>
+
           <tr>
             <!-- NOUVEAUX EN-TÊTES DE COLONNES -->
+           
             <th scope="col" class="col-head col-vol">VOL</th>
             <th scope="col" class="col-head col-dest">DESTINATION</th>
+             
             <th scope="col" class="col-head col-time">EMBARQUEMENT</th>
             <th scope="col" class="col-head col-gate">PORTE</th>
             <th scope="col" class="col-head col-obs">OBSRVATIONS</th>
