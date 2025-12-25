@@ -325,6 +325,460 @@ main.container {
   z-index: 5;
 }
 
+/* Effet radar en arrière-plan */
+.radar-bg {
+  position: fixed;
+  bottom: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 20%, rgba(10, 14, 39, 0.8) 100%);
+  z-index: -1;
+  animation: radar-sweep 20s linear infinite;
+  opacity: 1;
+}
+
+@keyframes radar-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   5. SECTION PASSEPORT PILOTE
+   ========================================================================== */
+
+/* Section principale améliorée */
+main.container {
+  padding-top: 120px;
+  padding-bottom: 60px;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.section-label {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: 'Oswald';
+  font-size: 1.8rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--text);
+  position: relative;
+  display: inline-block;
+}
+
+.section-label::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--accent-bright);
+}
+
+/* Dossier pilote amélioré */
+.pilot-dossier {
+  display: flex;
+  width: 100%;
+  background: linear-gradient(135deg, #080a15 0%, #10152b 100%);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.7),
+    inset 0 0 20px rgba(255, 59, 59, 0.1);
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.pilot-dossier:hover {
+  transform: translateY(-5px);
+}
+
+.corner {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--accent-bright);
+  z-index: 20;
+}
+
+.tl {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.tr {
+  top: -1px;
+  right: -1px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.bl {
+  bottom: -1px;
+  left: -1px;
+  border-right: none;
+  border-top: none;
+}
+
+.br {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Photo améliorée */
+.dossier-photo {
+  flex: 0 0 400px;
+  position: relative;
+  border-right: 1px solid var(--accent);
+  overflow: hidden;
+  background: #000;
+}
+
+.dossier-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s, filter 0.5s;
+}
+
+.dossier-photo:hover img {
+  transform: scale(1.05);
+  filter: contrast(1.2) saturate(1.1);
+}
+
+/* Effets scan améliorés */
+.scan-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-bright);
+  box-shadow: 0 0 15px var(--accent-bright);
+  opacity: 0;
+  z-index: 10;
+}
+
+.scan-horizontal {
+  top: 0;
+  animation: scanHorizontal 8s linear infinite;
+}
+
+.scan-vertical {
+  top: 0;
+  width: 2px;
+  height: 100%;
+  left: 0;
+  animation: scanVertical 10s linear infinite;
+}
+
+@keyframes scanHorizontal {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes scanVertical {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+.scan-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, rgba(255, 59, 59, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.dossier-photo:hover .scan-glow {
+  opacity: 1;
+}
+
+/* Section texte améliorée */
+.dossier-data {
+  flex: 1;
+  padding: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.data-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 25px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .data-title {
+            font-family: 'Oswald';
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            color: var(--text);
+            line-height: 1;
+            margin: 0;
+            position: relative;
+            padding-bottom: 5px;
+        } */
+
+.data-title {
+  font-family: 'Oswald';
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+  position: relative;
+  padding-bottom: 5px;
+
+  /* Dégradé type "chrome vers rouge" */
+  background: linear-gradient(90deg,
+      #d9dde8 0%,
+      /* gris clair légèrement bleuté */
+      #f6c1b5 40%,
+      /* ton chaud intermédiaire */
+      #ff3b3b 100%
+      /* ton rouge vif cohérent avec --accent-bright */
+    );
+
+  /* Le cœur de l’effet */
+  -webkit-background-clip: text;
+  /* nécessaire pour Chrome / Safari */
+  background-clip: text;
+  /* standard */
+  color: transparent;
+  /* pour que seul le bg apparaisse */
+}
+
+.data-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--accent-bright);
+}
+
+.data-subtitle {
+  color: var(--accent-bright);
+  font-family: 'Oswald';
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.status-badge {
+  border: 1px solid var(--accent-bright);
+  color: var(--accent-bright);
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: rgba(255, 59, 59, 0.1);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 59, 59, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 59, 59, 0);
+  }
+}
+
+.bio-content {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+  flex: 1;
+}
+
+.bio-section h2 {
+  font-family: 'Oswald';
+  color: var(--accent-bright);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  position: relative;
+  padding-left: 40px;
+}
+
+.bio-section h2::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--accent-bright);
+}
+
+.bio-section p {
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.bio-section p::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+
+.bio-section p:last-child {
+  margin-bottom: 0;
+}
+
+.bio-section strong {
+  color: var(--text);
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Footer amélioré */
+.dossier-footer {
+  margin-top: auto;
+  padding-top: 25px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.tech-info h3 {
+  font-family: 'Oswald';
+  color: var(--text);
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tech-info p {
+  font-size: 0.9rem;
+  color: var(--accent-bright);
+  font-family: 'Inter';
+  margin: 0;
+}
+
+.stamp {
+  border: 2px dashed var(--text-dim);
+  color: var(--text-dim);
+  padding: 10px 25px;
+  font-family: 'Oswald';
+  font-weight: 700;
+  letter-spacing: 3px;
+  font-size: 1.3rem;
+  transform: rotate(-8deg);
+  position: relative;
+  animation: float 4s ease-in-out infinite;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: rotate(-8deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-8deg) translateY(-5px);
+  }
+}
+
+.stamp::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, transparent, var(--accent-bright), transparent);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.stamp:hover::before {
+  opacity: 0.3;
+  animation: rotate-border 2s linear infinite;
+}
+
+@keyframes rotate-border {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 /* ==========================================================================
    7. FOOTER : PISTE DE NUIT

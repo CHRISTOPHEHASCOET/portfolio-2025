@@ -133,7 +133,60 @@ const initGateInteractions = () => {
     });
   });
 };
+ // Animation d'entrée du dossier
+        gsap.to(".pilot-dossier", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: "power3.out",
+            delay: 0.5
+        });
 
+        // Animation des sections de bio
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray(".bio-section").forEach((section, i) => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            tl.from(section, {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        });
+
+        // Animation du titre
+        gsap.to(".data-title", {
+            scrollTrigger: {
+                trigger: ".data-title",
+                start: "top 90%"
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.1,
+            ease: "back.out(1.7)"
+        });
+
+        // Animation des éléments de footer
+        gsap.from(".dossier-footer", {
+            scrollTrigger: {
+                trigger: ".dossier-footer",
+                start: "top 90%"
+            },
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            delay: 0.3
+        });
 // =========================================================
 // INITIALISATION GLOBALE
 // =========================================================
