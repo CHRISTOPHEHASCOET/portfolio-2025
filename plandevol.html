@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Métadonnées SEO -->
+    <meta name="description"
+        content="Terminal interactif de Christophe Hascoët. Découvrez mes projets de développement web, mes compétences et mon parcours." />
+    <meta property="og:title" content="C.Hascoët — Terminal Interactif" />
+    <meta property="og:description" content="Portfolio de Christophe Hascoët, développeur web." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://votre-domaine.com" />
+    <meta property="og:image" content="https://votre-domaine.com/assets/images/preview.jpg" />
+
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Styles CSS -->
+    <link rel="stylesheet" href="../css/plandevol.css" />
+    <link rel="stylesheet" href="css/normaliser.css">
+
+    <title>plan de vol</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-inner" id="nav-container">
+            <a href="index.html" class="logo" id="logo-ref" aria-label="Terminal principal">
+                <img src="asset/images/pilote-christophehascoet3.png" alt="Portrait de Christophe Hascoët" />
+                <div class="logo-text-group">
+                    <p class="logo-terminal">TERMINAL CH-2025</p>
+                    <p class="logo-ops">OPS : COMMANDANT DE BORD</p>
+                </div>
+            </a>
+
+            <nav class="nav-desktop" aria-label="Navigation principale">
+
+                <a href="index.html" class="nav-link cockpit-btn" data-gate="A01">
+                    <span class="gate-number">A01</span>
+                    <span class="nav-label">HALL DES DÉPARTS</span>
+                </a>
+
+                <a href="passeport.html" class="nav-link cockpit-btn" data-gate="B02">
+                    <span class="gate-number">B02</span>
+                    <span class="nav-label">PASSEPORT DU PILOTE</span>
+                </a>
+
+                <a href="embarquement.html" class="nav-link cockpit-btn" data-gate="C03">
+                    <span class="gate-number">C03</span>
+                    <span class="nav-label">ZONE D’EMBARQUEMENT</span>
+                </a>
+
+                <a href="plandevol.html" class="nav-link cockpit-btn" data-gate="D04">
+                    <span class="gate-number">D04</span>
+                    <span class="nav-label">PLAN DE VOL</span>
+                </a>
+
+                <a href="departure1.html" class="nav-link cockpit-btn" data-gate="E05">
+                    <span class="gate-number">E05</span>
+                    <span class="nav-label">POSTE DE PILOTAGE</span>
+                </a>
+
+                <a href="contact.html" class="nav-link cockpit-btn" data-gate="F06">
+                    <span class="gate-number">F06</span>
+                    <span class="nav-label">TOUR DE CONTRÔLE</span>
+                </a>
+            </nav>
+            <span class="plane-animated" id="plane" aria-hidden="true">✈</span>
+
+    </header>
+
+    <main class="container">
+        <aside class="timeline-rail">
+            <div class="timeline-line" id="timelineLine" style="height: 100%;">
+                <div class="timeline-plane" id="timelinePlane">
+                    <span>✈</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Contenu des études de cas -->
+        <section class="case-list">
+            <header class="page-title-wrap">
+                <h1 class="page-title">Boîte noire & plans de vol</h1>
+                <p class="page-subtitle">
+                    Dossiers techniques, cahiers des charges et analyses post-vol.
+                </p>
+                <div class="blackbox-banner">
+                    <span class="strong">ACCES : NIVEAU TECHNIQUE</span>
+                    <span>LOGS : BRIEFING • PLAN DE VOL • TURBULENCES • ATTERRISSAGE</span>
+                </div>
+            </header>
+
+            <!-- ÉTUDE DE CAS 1 -->
+            <article class="case-card">
+                <div class="case-corner-tag">MISSION CERTIFIANTE</div>
+
+                <header class="case-header">
+                    <div class="case-title-block">
+                        <div class="case-label">Dossier de vol — BOOKI</div>
+                        <h2 class="case-title">Plateforme de réservation responsive</h2>
+                        <div class="case-meta">HTML • CSS • Intégration Figma • Accessibilité de base</div>
+                    </div>
+                    <div class="case-tag">VOL BK-01</div>
+                </header>
+
+                <div class="checklist">
+                    <!-- Briefing -->
+                    <section class="check-block">
+                        <div class="check-header">
+                            <div class="check-title">Briefing — Conditions initiales</div>
+                            <div class="check-label">Problème</div>
+                        </div>
+                        <div class="check-body">
+                            <p>
+                                Le client souhaite une page d’accueil permettant de rechercher des hébergements et
+                                activités,
+                                basée sur une maquette Figma précise, avec un affichage optimal sur desktop et mobile.
+                            </p>
+                            <ul>
+                                <li>Respect pixel-perfect de la maquette.</li>
+                                <li>Structure sémantique propre pour le SEO.</li>
+                                <li>Comportement responsive attendu sans JS.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Plan de vol -->
+                    <section class="check-block">
+                        <div class="check-header">
+                            <div class="check-title">Plan de vol — Trajectoire technique</div>
+                            <div class="check-label">Solution</div>
+                        </div>
+                        <div class="check-body">
+                            <p>
+                                Choix d’une structure HTML simple avec une grille logique (header, zone de filtres,
+                                cartes d’hébergements,
+                                section activités) et d’une mise en page gérée avec Flexbox.
+                            </p>
+                            <ul>
+                                <li>Découpage en sections claires pour refléter la maquette.</li>
+                                <li>Gestion du responsive en mobile-first.</li>
+                                <li>Utilisation de classes utilitaires pour la cohérence des marges et typographies.
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Turbulences -->
+                    <section class="check-block">
+                        <div class="check-header">
+                            <div class="check-title">Turbulences — Anomalies en vol</div>
+                            <div class="check-label">Défis</div>
+                        </div>
+                        <div class="check-body">
+                            <p>
+                                Ajustement précis des espacements et des alignements entre desktop et mobile, avec des
+                                différences
+                                subtiles entre la maquette et le rendu navigateur.
+                            </p>
+                            <ul>
+                                <li>Gestion des variations de fontes et de l’anti-aliasing.</li>
+                                <li>Corrections de débordements sur petits écrans.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Atterrissage -->
+                    <section class="check-block">
+                        <div class="check-header">
+                            <div class="check-title">Atterrissage — Rapport de mission</div>
+                            <div class="check-label">Résultat</div>
+                        </div>
+                        <div class="check-body">
+                            <p>
+                                Livraison d’une intégration fidèle, responsive et validée sur plusieurs résolutions.
+                                Base saine pour d’éventuelles évolutions (ajout de JS, filtres dynamiques, etc.).
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </article>
+
+            <!-- ÉTUDE DE CAS 2 -->
+            <article class="case-card">
+                <div class="case-corner-tag">OPTIMISATION SEO</div>
+
+                <header class="case-header">
+                    <div class="case-title-block">
+                        <div class="case-label">Dossier de vol — La Panthère</div>
+                        <h2 class="case-title">Refonte SEO & accessibilité</h2>
+                        <div class="case-meta">SEO • Performance • Structure sémantique • Accessibilité</div>
+                    </div>
+                    <div class="case-tag">VOL LP-03</div>
+                </header>
+
+                <div class="checklist">
+                    <section class="check-block">
+                        <div class="check-header">
+                            <div class="check-title">Briefing — Conditions initiales</div>
+                            <div class="check-label">Problème</div>
+                        </div>
+                        <div class="check-body">
+                            <p>
+                                Site existant avec un trafic limité, temps de chargement élevé et une structure
+                                sémantique
+                                confuse pour les moteurs de recherche et les lecteurs d’écran.
+                            </p>
+                            <ul>
+                                <li>Balisage HTML non structuré.</li>
+                                <li>Images lourdes et non optimisées.</li>
+                                <li>Absence de bonnes pratiques d’accessibilité.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="check-block">
+                        <div class="check-header">
+                            <div class="check-title">Plan de vol — Trajectoire technique</div>
+                            <div class="check-label">Solution</div>
+                        </div>
+                        <div class="check-body">
+                            <p>
+                                Refonte du HTML avec une hiérarchie claire (h1–h3), ajout de textes alternatifs
+                                pertinents,
+                                optimisation des assets et amélioration de la structure des liens internes.
+                            </p>
+                            <ul>
+                                <li>Compression des images et lazy-loading ciblé.</li>
+                                <li>Amélioration des meta-tags et des titres de pages.</li>
+                                <li>Audit Lighthouse pour valider les progrès.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="check-block">
+                        <div class="check-header">
+                            <div class="check-title">Turbulences — Anomalies en vol</div>
+                            <div class="check-label">Défis</div>
+                        </div>
+                        <div class="check-body">
+                            <p>
+                                Trouver le bon équilibre entre refonte technique et respect du design existant,
+                                sans casser la charte graphique ni les habitudes des utilisateurs.
+                            </p>
+                            <ul>
+                                <li>Limites imposées par le design d’origine.</li>
+                                <li>Compatibilité avec les anciens navigateurs.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="check-block">
+                        <div class="check-header">
+                            <div class="check-title">Atterrissage — Rapport de mission</div>
+                            <div class="check-label">Résultat</div>
+                        </div>
+                        <div class="check-body">
+                            <p>
+                                Amélioration nette des scores Lighthouse (performance, SEO, accessibilité) et meilleure
+                                lisibilité
+                                du contenu pour les utilisateurs comme pour les moteurs de recherche.
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </article>
+
+            <!-- Tu pourras dupliquer un .case-card pour une troisième étude -->
+
+        </section>
+    </main>
+
+
+
+    <footer class="site-footer">
+        <section class="footer-inner" aria-label="Informations de bas de page">
+            <div class="footer-left-block">
+                <div class="runway-visual" aria-hidden="true">
+                    <div class="runway-centerline"></div>
+                    <div class="runway-lights">
+                        <span class="runway-light"></span>
+                        <span class="runway-light"></span>
+                        <span class="runway-light"></span>
+                        <span class="runway-light"></span>
+                        <span class="runway-light"></span>
+                    </div>
+                    <p class="runway-label">RUNWAY 07L</p>
+                    <p class="runway-code">07L</p>
+                </div>
+                <p class="piste-lights">
+                    <span>&lt;&lt;&lt; ZONE SÉCURISÉE &gt;&gt;&gt;</span>
+                    <span>FIN DE PARCOURS / TERMINAL</span>
+                </p>
+            </div>
+
+            <div class="footer-right-block">
+                <div class="status-row">
+                    <span class="status-tag">SYSTEM ONLINE</span>
+                    <span class="status-tag secondary">AUTORISATION DE DÉCOLLAGE DISPONIBLE</span>
+                </div>
+                <div class="footer-links">
+                    <a href="contact.html" class="status-tag secondary" aria-label="Aller vers la page de contact">
+                        CONTACTER LA TOUR DE CONTRÔLE
+                    </a>
+                    <a href="https://github.com/CHRISTOPHEHASCOET" target="_blank" rel="noopener noreferrer"
+                        aria-label="Aller vers mon profil GitHub (s'ouvre dans un nouvel onglet)">GitHub</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        aria-label="Aller vers mon profil LinkedIn (s'ouvre dans un nouvel onglet)">LinkedIn</a>
+                    <span>© 2025 PILOTE DIGITAL — TOUS DROITS RÉSERVÉS</span>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../script/plandevol.js"></script>
+</body>
+
+</html>

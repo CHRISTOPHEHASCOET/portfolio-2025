@@ -325,461 +325,226 @@ main.container {
   z-index: 5;
 }
 
-/* Effet radar en arrière-plan */
-.radar-bg {
-  position: fixed;
-  bottom: -200px;
-  right: -200px;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, transparent 20%, rgba(10, 14, 39, 0.8) 100%);
-  z-index: -1;
-  animation: radar-sweep 20s linear infinite;
-  opacity: 1;
-}
-
-@keyframes radar-sweep {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* ==========================================================================
-   5. SECTION PASSEPORT PILOTE
-   ========================================================================== */
-
-/* Section principale améliorée */
+/* MAIN LAYOUT */
 main.container {
-  padding-top: 120px;
-  padding-bottom: 60px;
+  flex: 1;
   max-width: var(--container-width);
   margin: 0 auto;
   width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.section-label {
-  width: 100%;
-  text-align: center;
-  /* margin-bottom: 30px; */
-  font-family: 'Oswald';
-  font-size: 2.6rem;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--accent);
+  padding: 130px 20px 60px;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 40px;
   position: relative;
-  display: inline-block;
-  margin: 3rem;
 }
 
-.section-label::after {
-  content: "";
-  position: absolute;
-  bottom: -15px;
-  left:36%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: var(--text);
-}
 
-/* Dossier pilote amélioré */
-.pilot-dossier {
-  display: flex;
-  width: 100%;
-  background: linear-gradient(135deg, #080a15 0%, #10152b 100%);
-  border: 1px solid var(--accent);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.7),
-    inset 0 0 20px rgba(255, 59, 59, 0.1);
-  position: relative;
-  transition: transform 0.3s;
-}
 
-.pilot-dossier:hover {
-  transform: translateY(-5px);
-}
-
-.corner {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border: 2px solid var(--accent-bright);
-  z-index: 20;
-}
-
-.tl {
-  top: -1px;
-  left: -1px;
-  border-right: none;
-  border-bottom: none;
-}
-
-.tr {
-  top: -1px;
-  right: -1px;
-  border-left: none;
-  border-bottom: none;
-}
-
-.bl {
-  bottom: -1px;
-  left: -1px;
-  border-right: none;
-  border-top: none;
-}
-
-.br {
-  bottom: -1px;
-  right: -1px;
-  border-left: none;
-  border-top: none;
-}
-
-/* Photo améliorée */
-.dossier-photo {
-  flex: 0 0 400px;
-  position: relative;
-  border-right: 1px solid var(--accent);
-  overflow: hidden;
-  background: #000;
-}
-
-.dossier-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s, filter 0.5s;
-}
-
-.dossier-photo:hover img {
-  transform: scale(1.05);
-  filter: contrast(1.2) saturate(1.1);
-}
-
-/* Effets scan améliorés */
-.scan-line {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--accent-bright);
-  box-shadow: 0 0 15px var(--accent-bright);
-  opacity: 0;
-  z-index: 10;
-}
-
-.scan-horizontal {
-  top: 0;
-  animation: scanHorizontal 8s linear infinite;
-}
-
-.scan-vertical {
-  top: 0;
-  width: 2px;
-  height: 100%;
-  left: 0;
-  animation: scanVertical 10s linear infinite;
-}
-
-@keyframes scanHorizontal {
-  0% {
-    top: 0%;
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  90% {
-    opacity: 1;
-  }
-
-  100% {
-    top: 100%;
-    opacity: 0;
-  }
-}
-
-@keyframes scanVertical {
-  0% {
-    left: 0%;
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  90% {
-    opacity: 1;
-  }
-
-  100% {
-    left: 100%;
-    opacity: 0;
-  }
-}
-
-.scan-glow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, transparent 0%, rgba(255, 59, 59, 0.1) 100%);
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-
-.dossier-photo:hover .scan-glow {
-  opacity: 1;
-}
-
-/* Section texte améliorée */
-.dossier-data {
-  flex: 1;
-  padding: 40px;
-  position: relative;
+/* COLONNE CONTENU */
+.case-list {
   display: flex;
   flex-direction: column;
+  gap: 40px;
 }
 
-.data-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 25px;
-  margin-bottom: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.page-title-wrap {
+  margin-bottom: 10px;
 }
 
-/* .data-title {
-            font-family: 'Oswald';
-            font-size: 3.5rem;
-            text-transform: uppercase;
-            color: var(--text);
-            line-height: 1;
-            margin: 0;
-            position: relative;
-            padding-bottom: 5px;
-        } */
-
-.data-title {
+.page-title {
   font-family: 'Oswald';
-  font-size: 3.5rem;
+  font-size: 2.6rem;
+  text-align: center;
   text-transform: uppercase;
-  line-height: 1;
-  margin: 0;
+  letter-spacing: 3px;
   position: relative;
-  padding-bottom: 5px;
-
-  /* Dégradé type "chrome vers rouge" */
-  background: linear-gradient(90deg,
-      #d9dde8 0%,
-      /* gris clair légèrement bleuté */
-      #f6c1b5 40%,
-      /* ton chaud intermédiaire */
-      #ff3b3b 100%
-      /* ton rouge vif cohérent avec --accent-bright */
-    );
-
-  /* Le cœur de l’effet */
-  -webkit-background-clip: text;
-  /* nécessaire pour Chrome / Safari */
+  background: linear-gradient(90deg, #d9dde8 0%, #f6c1b5 40%, #ff3b3b 100%);
+  background-clip: border-box;
   background-clip: text;
-  /* standard */
+  -webkit-background-clip: text;
   color: transparent;
-  /* pour que seul le bg apparaisse */
 }
 
-.data-title::after {
+.page-title::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
   height: 3px;
   background: var(--accent-bright);
+
 }
 
-.data-subtitle {
-  color: var(--accent-bright);
-  font-family: 'Oswald';
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 1.1rem;
-  font-weight: 600;
+.page-subtitle {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.95rem;
   margin-top: 10px;
+
 }
 
-.status-badge {
-  border: 1px solid var(--accent-bright);
-  color: var(--accent-bright);
-  padding: 8px 15px;
-  font-size: 0.9rem;
+/* bannière type "boîte noire" */
+.blackbox-banner {
+  margin-top: 20px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: rgba(5, 7, 17, 0.75);
+  border: 1px solid rgba(255, 59, 59, 0.4);
+  font-size: 0.78rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-weight: 700;
-  background: rgba(255, 59, 59, 0.1);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.7);
-  }
-
-  70% {
-    box-shadow: 0 0 0 10px rgba(255, 59, 59, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 59, 59, 0);
-  }
-}
-
-.bio-content {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text-dim);
-  flex: 1;
-}
-
-.bio-section h2 {
-  font-family: 'Oswald';
-  color: var(--accent-bright);
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-  letter-spacing: 2px;
-  position: relative;
-  padding-left: 40px;
-}
-
-.bio-section h2::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: var(--accent-bright);
-}
-
-.bio-section p {
-  margin-bottom: 20px;
-  position: relative;
-  padding-left: 20px;
-}
-
-.bio-section p::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-size: 0.8rem;
-}
-
-.bio-section p:last-child {
-  margin-bottom: 0;
-}
-
-.bio-section strong {
-  color: var(--text);
-  font-weight: 600;
-  background: linear-gradient(90deg, var(--accent), var(--accent-bright));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Footer amélioré */
-.dossier-footer {
-  margin-top: auto;
-  padding-top: 25px;
-  border-top: 1px dashed rgba(255, 255, 255, 0.15);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.tech-info h3 {
-  font-family: 'Oswald';
-  color: var(--text);
-  font-size: 0.85rem;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.tech-info p {
-  font-size: 0.9rem;
-  color: var(--accent-bright);
-  font-family: 'Inter';
-  margin: 0;
-}
-
-.stamp {
-  border: 2px dashed var(--text-dim);
+  gap: 10px;
   color: var(--text-dim);
-  padding: 10px 25px;
+}
+
+.blackbox-banner span.strong {
+  color: var(--accent-bright);
   font-family: 'Oswald';
-  font-weight: 700;
-  letter-spacing: 3px;
-  font-size: 1.3rem;
-  transform: rotate(-8deg);
+}
+
+/* BLOC ÉTUDE DE CAS */
+.case-card {
+  background: radial-gradient(circle at top left, #151b36 0%, #070915 60%);
+  border-radius: 14px;
+  border: 1px solid rgba(139, 30, 63, 0.6);
+  padding: 24px 26px 22px;
   position: relative;
-  animation: float 4s ease-in-out infinite;
-  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
 }
 
-@keyframes float {
-
-  0%,
-  100% {
-    transform: rotate(-8deg) translateY(0);
-  }
-
-  50% {
-    transform: rotate(-8deg) translateY(-5px);
-  }
-}
-
-.stamp::before {
+.case-card::before {
   content: "";
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, transparent, var(--accent-bright), transparent);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 59, 59, 0.25), transparent 40%, transparent 60%, rgba(159, 168, 179, 0.15) 100%);
+  mix-blend-mode: soft-light;
+  opacity: 0.4;
+  pointer-events: none;
 }
 
-.stamp:hover::before {
-  opacity: 0.3;
-  animation: rotate-border 2s linear infinite;
+.case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
 }
 
-@keyframes rotate-border {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+.case-title-block {
+  max-width: 70%;
 }
+
+.case-label {
+  font-family: 'Oswald';
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-bright);
+  margin-bottom: 6px;
+}
+
+.case-title {
+  font-family: 'Oswald';
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.case-meta {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+}
+
+.case-tag {
+  display: inline-block;
+  border: 1px solid var(--accent-bright);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Oswald';
+}
+
+/* checklist */
+.checklist {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.check-block {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(5, 7, 17, 0.8);
+  border: 1px solid rgba(159, 168, 179, 0.3);
+}
+
+.check-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.check-title {
+  font-family: 'Oswald';
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text);
+}
+
+.check-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-bright);
+}
+
+.check-body {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.check-body ul {
+  margin-left: 18px;
+  margin-top: 4px;
+}
+
+.check-body li {
+  margin-bottom: 4px;
+}
+
+/* petit indicateur en coin */
+.case-corner-tag {
+  position: absolute;
+  top: 14px;
+  right: -40px;
+  background: rgba(10, 14, 39, 0.8);
+  border: 1px solid rgba(159, 168, 179, 0.4);
+  color: var(--text-dim);
+  font-family: 'Oswald';
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 30px;
+  transform: rotate(35deg);
+  z-index: 2;
+}
+
+
 
 /* ==========================================================================
    7. FOOTER : PISTE DE NUIT
