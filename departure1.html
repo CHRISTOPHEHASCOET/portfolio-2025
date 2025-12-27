@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tableau de bord — CH‑2025</title>
 
   <!-- Polices -->
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
 
   <!-- GSAP -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
@@ -28,19 +31,23 @@
       --screen-bg: #05091F;
       --panel-bg: #151C3B;
       --panel-border: #343C6A;
-      --shadow-soft: 0 18px 45px rgba(0,0,0,0.75);
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.75);
       --scanline-dark: rgba(0, 0, 0, 0.32);
 
       --font-display: 'Oswald', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       background:
-        radial-gradient(900px 600px at 10% 0%, rgba(0,217,255,0.15), transparent 60%),
-        radial-gradient(900px 600px at 90% 10%, rgba(139,30,63,0.25), transparent 65%),
+        radial-gradient(900px 600px at 10% 0%, rgba(0, 217, 255, 0.15), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(139, 30, 63, 0.25), transparent 65%),
         linear-gradient(180deg, var(--primary) 0%, #05091B 40%, #040614 100%);
       color: var(--text);
       font-family: 'Inter', sans-serif;
@@ -66,7 +73,7 @@
       width: 100%;
       height: 36px;
       background: #020416;
-      border-bottom: 1px solid rgba(0,217,255,0.25);
+      border-bottom: 1px solid rgba(0, 217, 255, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -76,6 +83,7 @@
       color: var(--text-secondary);
       z-index: 1100;
     }
+
     .status-item span {
       color: var(--accent-bright);
     }
@@ -89,8 +97,9 @@
       z-index: 1000;
       background: linear-gradient(180deg, var(--secondary), #121730);
       border-bottom: 2px solid var(--accent);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
     }
+
     .header-inner {
       max-width: 1200px;
       margin: 0 auto;
@@ -100,6 +109,7 @@
       justify-content: space-between;
       gap: 16px;
     }
+
     .logo {
       font-family: var(--font-display);
       font-weight: 700;
@@ -109,10 +119,10 @@
       text-decoration: none;
       padding: 6px 12px;
       border-radius: 10px;
-      border: 1px solid rgba(0,217,255,0.22);
+      border: 1px solid rgba(0, 217, 255, 0.22);
       background:
-        radial-gradient(circle at 0 0, rgba(0,217,255,0.26), transparent 55%),
-        rgba(2,6,23,0.95);
+        radial-gradient(circle at 0 0, rgba(0, 217, 255, 0.26), transparent 55%),
+        rgba(2, 6, 23, 0.95);
     }
 
     .nav-desktop {
@@ -120,6 +130,7 @@
       gap: 10px;
       flex-wrap: wrap;
     }
+
     .nav-link {
       position: relative;
       display: inline-flex;
@@ -135,15 +146,17 @@
       text-decoration: none;
       transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
     }
+
     .nav-gate {
       font-family: var(--font-mono);
       font-size: 0.68rem;
       padding: 2px 7px;
       border-radius: 999px;
-      background: rgba(4,6,26,0.9);
-      border: 1px solid rgba(0,217,255,0.25);
+      background: rgba(4, 6, 26, 0.9);
+      border: 1px solid rgba(0, 217, 255, 0.25);
       color: var(--accent-bright);
     }
+
     .nav-link::after {
       content: "";
       position: absolute;
@@ -152,20 +165,23 @@
       bottom: 0;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(90deg, transparent, rgba(0,217,255,0.7), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.7), transparent);
       opacity: 0;
       transform: translateY(4px);
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
+
     .nav-link:hover {
       color: var(--text);
-      background: rgba(0,0,0,0.35);
+      background: rgba(0, 0, 0, 0.35);
       transform: translateY(-1px);
     }
+
     .nav-link.active {
       color: var(--accent-bright);
-      background: rgba(0,0,0,0.45);
+      background: rgba(0, 0, 0, 0.45);
     }
+
     .nav-link.active::after {
       opacity: 1;
       transform: translateY(0);
@@ -189,29 +205,32 @@
       box-shadow: var(--shadow-soft);
       overflow: hidden;
     }
+
     .panel::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(135deg, rgba(0,217,255,0.16), transparent 65%),
-        radial-gradient(800px 380px at 100% 0%, rgba(139,30,63,0.45), transparent 75%);
+        linear-gradient(135deg, rgba(0, 217, 255, 0.16), transparent 65%),
+        radial-gradient(800px 380px at 100% 0%, rgba(139, 30, 63, 0.45), transparent 75%);
       opacity: 0.35;
       pointer-events: none;
     }
-    .panel > * {
+
+    .panel>* {
       position: relative;
       z-index: 1;
     }
 
     .panel-header {
       padding: 14px 18px 10px;
-      border-bottom: 1px solid rgba(0,0,0,0.45);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.45);
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       gap: 16px;
     }
+
     .panel-kicker {
       font-family: var(--font-mono);
       font-size: 0.8rem;
@@ -219,6 +238,7 @@
       letter-spacing: 0.16em;
       color: var(--text-secondary);
     }
+
     .panel-title {
       font-family: var(--font-display);
       font-size: 1.4rem;
@@ -226,6 +246,7 @@
       text-transform: uppercase;
       margin-top: 4px;
     }
+
     .panel-status {
       font-family: var(--font-mono);
       font-size: 0.7rem;
@@ -233,9 +254,9 @@
       letter-spacing: 0.14em;
       padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(0,217,255,0.4);
+      border: 1px solid rgba(0, 217, 255, 0.4);
       color: var(--accent-bright);
-      background: rgba(4,6,26,0.8);
+      background: rgba(4, 6, 26, 0.8);
       white-space: nowrap;
     }
 
@@ -250,6 +271,7 @@
     .hero-panel {
       grid-column: span 12;
     }
+
     .hero-body {
       padding: 18px;
       display: flex;
@@ -257,30 +279,36 @@
       justify-content: space-between;
       gap: 20px;
     }
+
     .hero-left {
       max-width: 60%;
     }
+
     .hero-left h1 {
       font-family: var(--font-display);
       font-size: 2.6rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
     }
+
     .hero-meta {
       margin-top: 10px;
       font-family: var(--font-mono);
       font-size: 0.8rem;
       color: var(--text-secondary);
     }
+
     .hero-meta span {
       color: var(--accent-bright);
     }
+
     .hero-right {
       text-align: right;
       font-family: var(--font-mono);
       font-size: 0.8rem;
       color: var(--text-secondary);
     }
+
     .hero-gate {
       display: inline-flex;
       align-items: center;
@@ -288,9 +316,10 @@
       padding: 6px 10px;
       border-radius: 999px;
       background: rgba(4, 6, 30, 0.9);
-      border: 1px solid rgba(0,217,255,0.35);
+      border: 1px solid rgba(0, 217, 255, 0.35);
       margin-bottom: 4px;
     }
+
     .hero-gate span:nth-child(2) {
       color: var(--accent-bright);
     }
@@ -299,21 +328,24 @@
     .instruments-panel {
       grid-column: span 12;
     }
+
     .instruments-body {
       padding: 18px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
+
     .radar-card {
       background: rgba(5, 9, 30, 0.9);
       border-radius: 8px;
-      border: 1px solid rgba(0,0,0,0.5);
+      border: 1px solid rgba(0, 0, 0, 0.5);
       padding: 12px 12px 14px;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
+
     .radar-card h3 {
       font-family: var(--font-display);
       font-size: 0.95rem;
@@ -321,42 +353,62 @@
       text-transform: uppercase;
       color: var(--text);
     }
+
     .radar-card p {
       font-size: 0.85rem;
       color: var(--text-secondary);
     }
+
     .radar-display {
       width: 100%;
       aspect-ratio: 1;
       border-radius: 50%;
-      border: 1px solid rgba(0,217,255,0.4);
+      border: 1px solid rgba(0, 217, 255, 0.4);
       position: relative;
       background:
-        radial-gradient(circle at center, rgba(0,217,255,0.16) 0, rgba(5,9,31,1) 70%);
-      box-shadow: inset 0 0 28px rgba(0,0,0,0.85);
+        radial-gradient(circle at center, rgba(0, 217, 255, 0.16) 0, rgba(5, 9, 31, 1) 70%);
+      box-shadow: inset 0 0 28px rgba(0, 0, 0, 0.85);
       overflow: hidden;
       margin-top: 4px;
     }
+
     .radar-sweep {
       position: absolute;
       inset: -18%;
-      background: conic-gradient(from 0deg, rgba(0,217,255,0.32), transparent 42%);
+      background: conic-gradient(from 0deg, rgba(0, 217, 255, 0.32), transparent 42%);
       border-radius: 50%;
       mix-blend-mode: screen;
     }
+
     .radar-dot {
       position: absolute;
       width: 6px;
       height: 6px;
       border-radius: 50%;
       background: #22C55E;
-      box-shadow: 0 0 12px rgba(34,197,94,0.9);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
     }
+
     /* positions simplifiées */
-    .radar-dot.p1 { top: 20%; left: 65%; }
-    .radar-dot.p2 { top: 45%; left: 30%; }
-    .radar-dot.p3 { top: 60%; left: 70%; }
-    .radar-dot.p4 { top: 78%; left: 40%; }
+    .radar-dot.p1 {
+      top: 20%;
+      left: 65%;
+    }
+
+    .radar-dot.p2 {
+      top: 45%;
+      left: 30%;
+    }
+
+    .radar-dot.p3 {
+      top: 60%;
+      left: 70%;
+    }
+
+    .radar-dot.p4 {
+      top: 78%;
+      left: 40%;
+    }
 
     .radar-tags {
       font-family: var(--font-mono);
@@ -369,15 +421,18 @@
     .flight-panel {
       grid-column: span 12;
     }
+
     .flight-body {
       padding: 18px 20px 20px;
     }
+
     .flight-entry {
       position: relative;
       margin-bottom: 18px;
       padding-left: 22px;
       border-left: 2px solid var(--accent-bright);
     }
+
     .flight-entry::before {
       content: "";
       position: absolute;
@@ -388,23 +443,27 @@
       border-radius: 50%;
       border: 2px solid var(--accent-bright);
       background: var(--door-background);
-      box-shadow: 0 0 10px rgba(0,217,255,0.7);
+      box-shadow: 0 0 10px rgba(0, 217, 255, 0.7);
     }
+
     .flight-date {
       font-family: var(--font-mono);
       font-size: 0.8rem;
       color: var(--accent-bright);
       margin-bottom: 4px;
     }
+
     .flight-title {
       font-family: var(--font-display);
       font-size: 1.15rem;
     }
+
     .flight-company {
       font-size: 0.9rem;
       color: var(--text-secondary);
       margin-bottom: 4px;
     }
+
     .flight-text {
       font-size: 0.94rem;
       color: var(--text-secondary);
@@ -414,19 +473,22 @@
     .training-panel {
       grid-column: span 12;
     }
+
     .training-body {
       padding: 18px;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
     }
+
     .training-card {
       background: rgba(5, 9, 30, 0.9);
       border-radius: 8px;
-      border: 1px solid rgba(0,0,0,0.5);
+      border: 1px solid rgba(0, 0, 0, 0.5);
       padding: 14px 14px 12px;
       position: relative;
     }
+
     .training-type {
       font-family: var(--font-mono);
       font-size: 0.7rem;
@@ -435,16 +497,19 @@
       color: var(--text-secondary);
       margin-bottom: 4px;
     }
+
     .training-name {
       font-family: var(--font-display);
       font-size: 1rem;
       margin-bottom: 4px;
     }
+
     .training-org {
       font-size: 0.9rem;
       color: var(--text-secondary);
       margin-bottom: 4px;
     }
+
     .training-date {
       font-family: var(--font-mono);
       font-size: 0.8rem;
@@ -455,12 +520,14 @@
     .comms-panel {
       grid-column: span 12;
     }
+
     .comms-body {
       padding: 18px;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
     }
+
     .comms-column-title {
       font-family: var(--font-display);
       font-size: 0.9rem;
@@ -469,18 +536,20 @@
       color: var(--text-secondary);
       margin-bottom: 6px;
     }
+
     .comms-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(5,9,30,0.9);
-      border: 1px solid rgba(0,0,0,0.5);
+      background: rgba(5, 9, 30, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.5);
       margin: 4px 4px 4px 0;
       font-size: 0.85rem;
       color: var(--text-secondary);
     }
+
     .comms-code {
       font-family: var(--font-mono);
       font-size: 0.75rem;
@@ -491,19 +560,22 @@
     .stats-panel {
       grid-column: span 12;
     }
+
     .stats-body {
       padding: 18px;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 14px;
     }
+
     .stat-card {
       background: rgba(5, 9, 30, 0.9);
       border-radius: 8px;
-      border: 1px solid rgba(0,0,0,0.6);
+      border: 1px solid rgba(0, 0, 0, 0.6);
       padding: 12px 10px;
       text-align: center;
     }
+
     .stat-label {
       font-family: var(--font-mono);
       font-size: 0.75rem;
@@ -512,6 +584,7 @@
       color: var(--text-secondary);
       margin-bottom: 6px;
     }
+
     .stat-value {
       font-family: var(--font-display);
       font-size: 1.6rem;
@@ -522,13 +595,14 @@
     /* CTA PRÊT POUR LE DÉCOLLAGE */
     .cta-panel {
       grid-column: span 12;
-      background:linear-gradient(180deg, var(--door-gradient-top), var(--door-background));
+      background: linear-gradient(180deg, var(--door-gradient-top), var(--door-background));
       border-radius: 10px;
-      border: 1px solid rgba(0,0,0,0.7);
+      border: 1px solid rgba(0, 0, 0, 0.7);
       padding: 26px 20px 24px;
       text-align: center;
       box-shadow: var(--shadow-soft);
     }
+
     .cta-title {
       font-family: var(--font-display);
       font-size: 1.6rem;
@@ -536,12 +610,14 @@
       text-transform: uppercase;
       margin-bottom: 10px;
     }
+
     .cta-text {
       max-width: 70ch;
       margin: 0 auto 18px;
       color: var(--text);
       font-size: 0.95rem;
     }
+
     .cta-button {
       display: inline-flex;
       align-items: center;
@@ -556,14 +632,15 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       font-size: 0.9rem;
-      box-shadow: 0 0 24px rgba(0,0,0,0.7);
+      box-shadow: 0 0 24px rgba(0, 0, 0, 0.7);
       cursor: pointer;
       transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
+
     .cta-button:hover {
       transform: translateY(-2px);
       background: #05091F;
-      box-shadow: 0 0 30px rgba(0,0,0,0.9);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
     }
 
     /* FOOTER façon fin de piste */
@@ -573,17 +650,19 @@
       border-top: 2px solid var(--accent);
       padding: 26px 20px 16px;
       color: var(--text-secondary);
-      box-shadow: 0 -12px 40px rgba(0,0,0,0.85);
+      box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.85);
       font-family: var(--font-mono);
       font-size: 0.75rem;
     }
+
     .footer-inner {
       max-width: 1200px;
       margin: 0 auto 14px;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
+
     .footer-title {
       text-transform: uppercase;
       letter-spacing: 0.14em;
@@ -591,30 +670,59 @@
       margin-bottom: 6px;
       font-size: 0.75rem;
     }
+
     .footer-inner p,
     .footer-inner a {
       color: var(--text-secondary);
       text-decoration: none;
       font-size: 0.78rem;
     }
+
     .footer-bottom {
       text-align: center;
-      border-top: 1px dashed rgba(173,181,189,0.4);
+      border-top: 1px dashed rgba(173, 181, 189, 0.4);
       padding-top: 8px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
     @media (max-width: 900px) {
-      main { margin-top: 140px; }
-      .instruments-body { grid-template-columns: 1fr; }
-      .training-body { grid-template-columns: 1fr; }
-      .comms-body { grid-template-columns: 1fr; }
-      .stats-body { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .hero-left { max-width: 100%; }
-      .hero-body { flex-direction: column; align-items: flex-start; }
-      .hero-right { text-align: left; }
-      .footer-inner { grid-template-columns: 1fr; }
+      main {
+        margin-top: 140px;
+      }
+
+      .instruments-body {
+        grid-template-columns: 1fr;
+      }
+
+      .training-body {
+        grid-template-columns: 1fr;
+      }
+
+      .comms-body {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-body {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-left {
+        max-width: 100%;
+      }
+
+      .hero-body {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-right {
+        text-align: left;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -690,7 +798,8 @@
           <span>Terminal 3 — Section cockpit</span>
         </div>
       </div>
-      <p class="tagline">// Cette section regroupe les instruments de navigation, le plan de vol, les communications et les données de mission du pilote.</p>
+      <p class="tagline">// Cette section regroupe les instruments de navigation, le plan de vol, les communications et
+        les données de mission du pilote.</p>
     </section>
 
     <!-- INSTRUMENTS : 3 RADARS DE COMPÉTENCES -->
@@ -1007,4 +1116,5 @@
     });
   </script>
 </body>
+
 </html>

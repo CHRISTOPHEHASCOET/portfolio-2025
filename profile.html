@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Métadonnées SEO -->
+    <meta name="description"
+        content="Terminal interactif de Christophe Hascoët. Découvrez mes projets de développement web, mes compétences et mon parcours." />
+    <meta property="og:title" content="C.Hascoët — Terminal Interactif" />
+    <meta property="og:description" content="Portfolio de Christophe Hascoët, développeur web." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://votre-domaine.com" />
+    <meta property="og:image" content="https://votre-domaine.com/assets/images/preview.jpg" />
+
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Styles CSS -->
+    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/normaliser.css">
+
+    <title>cockpit</title>
+</head>
+
+<body>
+
+    <!-- TRANSITION D'ENTRÉE -->
+    <div class="page-transition">
+        <div class="transition-text">Chargement Cockpit</div>
+        <div class="transition-bar">
+            <div class="transition-bar-fill"></div>
+        </div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner" id="nav-container">
+            <a href="index.html" class="logo" id="logo-ref" aria-label="Terminal principal">
+                <img src="asset/images/pilote-christophehascoet3.png" alt="Portrait de Christophe Hascoët" />
+                <div class="logo-text-group">
+                    <p class="logo-terminal">TERMINAL CH-2025</p>
+                    <p class="logo-ops">OPS : COMMANDANT DE BORD</p>
+                </div>
+            </a>
+
+            <nav class="nav-desktop" aria-label="Navigation principale">
+
+                <a href="index.html" class="nav-link cockpit-btn" data-gate="A01">
+                    <span class="gate-number">A01</span>
+                    <span class="nav-label">HALL DES DÉPARTS</span>
+                </a>
+
+                <a href="passeport.html" class="nav-link cockpit-btn" data-gate="B02">
+                    <span class="gate-number">B02</span>
+                    <span class="nav-label">PASSEPORT DU PILOTE</span>
+                </a>
+
+                <a href="embarquement.html" class="nav-link cockpit-btn" data-gate="C03">
+                    <span class="gate-number">C03</span>
+                    <span class="nav-label">ZONE D’EMBARQUEMENT</span>
+                </a>
+
+                <a href="plandevol.html" class="nav-link cockpit-btn" data-gate="D04">
+                    <span class="gate-number">D04</span>
+                    <span class="nav-label">PLAN DE VOL</span>
+                </a>
+
+                <a href="departure1.html" class="nav-link cockpit-btn" data-gate="E05">
+                    <span class="gate-number">E05</span>
+                    <span class="nav-label">POSTE DE PILOTAGE</span>
+                </a>
+
+                <a href="profile.html" class="nav-link cockpit-btn" data-gate="E05">
+                    <span class="gate-number">E05</span>
+                    <span class="nav-label">POSTE DE PILOTAGE</span>
+                </a>
+
+                <a href="contact.html" class="nav-link cockpit-btn" data-gate="F06">
+                    <span class="gate-number">F06</span>
+                    <span class="nav-label">TOUR DE CONTRÔLE</span>
+                </a>
+            </nav>
+            <span class="plane-animated" id="plane" aria-hidden="true">✈</span>
+    </header>
+
+    <!-- MAIN -->
+
+
+    <main class="profile-page">
+
+        <!-- HERO COCKPIT -->
+        <section class="hero">
+            <p class="hero-flight">VOL CH-2025</p>
+            <h1 class="hero-title">Cockpit de Commandement</h1>
+            <p class="hero-sub">Statut du Pilote : En Ligne | Suivi des compétences et trajectoires</p>
+        </section>
+
+        <!-- RADAR DE PILOTAGE (soft skills) -->
+        <section class="panel radar-section radar-pilotage">
+            <div class="panel-header">
+                <div>
+                    <div class="panel-kicker">Soft skills</div>
+                    <h2 class="panel-title">Radar de Pilotage</h2>
+                </div>
+                <span class="panel-status">Système stable</span>
+            </div>
+
+            <div class="radar-layout">
+                <!-- RADAR -->
+                <div class="radar-display">
+                    <div class="radar-ring"></div>
+                    <div class="radar-ring"></div>
+                    <div class="radar-ring"></div>
+                    <div class="radar-sweep"></div>
+
+                    <!-- 6 points + 6 codes -->
+                    <div class="radar-dot dot-1"></div>
+                    <span class="radar-code-inside code-proadapt">PRO-ADAPT</span>
+
+                    <div class="radar-dot dot-2"></div>
+                    <span class="radar-code-inside code-synth">SYNTH</span>
+
+                    <div class="radar-dot dot-3"></div>
+                    <span class="radar-code-inside code-autocalm">AUTO-CALM</span>
+
+                    <div class="radar-dot dot-4"></div>
+                    <span class="radar-code-inside code-innov">INNOV-CREA</span>
+
+                    <div class="radar-dot dot-5"></div>
+                    <span class="radar-code-inside code-team">TEAM-SP</span>
+
+                    <div class="radar-dot dot-6"></div>
+                    <span class="radar-code-inside code-rigcent">RIG-CENT</span>
+                </div>
+
+                <!-- LÉGENDE -->
+                <div class="radar-legend">
+                    <div class="radar-item">
+                        <span class="radar-code">PRO-ADAPT</span>
+                        <span class="radar-label">Proactivité & adaptabilité</span>
+                        <span class="radar-status radar-status--active">ON</span>
+                    </div>
+                    <div class="radar-item">
+                        <span class="radar-code">SYNTH</span>
+                        <span class="radar-label">Synthèse</span>
+                        <span class="radar-status radar-status--stable">STABLE</span>
+                    </div>
+                    <div class="radar-item">
+                        <span class="radar-code">AUTO-CALM</span>
+                        <span class="radar-label">Autonomie & sang-froid</span>
+                        <span class="radar-status radar-status--active">ON</span>
+                    </div>
+                    <div class="radar-item">
+                        <span class="radar-code">INNOV-CREA</span>
+                        <span class="radar-label">Innovation & créativité</span>
+                        <span class="radar-status radar-status--prio">PRIORITAIRE</span>
+                    </div>
+                    <div class="radar-item">
+                        <span class="radar-code">TEAM-SP</span>
+                        <span class="radar-label">Collaboration</span>
+                        <span class="radar-status radar-status--active">ON</span>
+                    </div>
+                    <div class="radar-item">
+                        <span class="radar-code">RIG-CENT</span>
+                        <span class="radar-label">Rigueur & centricité</span>
+                        <span class="radar-status radar-status--stable">STABLE</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RADAR DE MISSION (Mad Skills) -->
+        <section class="panel radar-section radar-mad">
+            <div class="panel-header">
+                <div>
+                    <div class="panel-kicker">Mad skills</div>
+                    <h2 class="panel-title">Radar de Mission</h2>
+                </div>
+                <span class="panel-status">Atouts spéciaux</span>
+            </div>
+
+            <div class="radar-layout">
+                <!-- Visuel du radar : même structure, profite déjà de l’animation GSAP -->
+                <div class="radar-display">
+                    <div class="radar-ring"></div>
+                    <div class="radar-ring"></div>
+                    <div class="radar-ring"></div>
+                    <div class="radar-sweep"></div>
+
+                    <!-- points + codes 1 à 6 -->
+                    <div class="radar-dot dot-1"></div>
+                    <span class="radar-code-inside code-op">OP-EXTR</span>
+
+                    <div class="radar-dot dot-2"></div>
+                    <span class="radar-code-inside code-com">COM-AMB</span>
+
+                    <div class="radar-dot dot-3"></div>
+                    <span class="radar-code-inside code-dual">DUAL-PIL</span>
+
+                    <div class="radar-dot dot-4"></div>
+                    <span class="radar-code-inside code-rad">RAD-VEIL</span>
+
+                    <div class="radar-dot dot-5"></div>
+                    <span class="radar-code-inside code-traf">TRAF-GEST</span>
+
+                    <div class="radar-dot dot-6"></div>
+                    <span class="radar-code-inside code-ux">UX-EXP</span>
+                </div>
+
+                <div class="radar-legend radar-legend--align">
+                    <div class="radar-item">
+                        <span class="radar-code">OP-EXTR</span>
+                        <div class="radar-text">
+                            <span class="radar-label">Opérations en conditions extrêmes</span>
+                            <span class="radar-detail">Service en environnement extrême (-15°C, Ice Bar)</span>
+                        </div>
+                        <span class="radar-status radar-status--active">ACTIVÉ</span>
+                    </div>
+
+                    <div class="radar-item">
+                        <span class="radar-code">COM-AMB</span>
+                        <div class="radar-text">
+                            <span class="radar-label">Gestion de l'ambiance de mission</span>
+                            <span class="radar-detail">Animation / ambiance (clubs, hôtels, Disney)</span>
+                        </div>
+                        <span class="radar-status radar-status--stable">STABLE</span>
+                    </div>
+
+                    <div class="radar-item">
+                        <span class="radar-code">DUAL-PIL</span>
+                        <div class="radar-text">
+                            <span class="radar-label">Double système de pilotage</span>
+                            <span class="radar-detail">Double expertise : technique + relation client</span>
+                        </div>
+                        <span class="radar-status radar-status--prio">PRIORITAIRE</span>
+                    </div>
+
+                    <div class="radar-item">
+                        <span class="radar-code">RAD-VEIL</span>
+                        <div class="radar-text">
+                            <span class="radar-label">Radar de veille technologique</span>
+                            <span class="radar-detail">Veille technologique & écriture créative</span>
+                        </div>
+                        <span class="radar-status radar-status--active">ACTIVÉ</span>
+                    </div>
+
+                    <div class="radar-item">
+                        <span class="radar-code">TRAF-GEST</span>
+                        <div class="radar-text">
+                            <span class="radar-label">Gestion de flux de trafic</span>
+                            <span class="radar-detail">RATP, tourisme, restauration</span>
+                        </div>
+                        <span class="radar-status radar-status--stable">STABLE</span>
+                    </div>
+
+                    <div class="radar-item">
+                        <span class="radar-code">UX-EXP</span>
+                        <div class="radar-text">
+                            <span class="radar-label">Expérimentations UX/UI & design web</span>
+                            <span class="radar-detail">Tests d’interfaces, prototypes et micro‑interactions</span>
+                        </div>
+                        <span class="radar-status radar-status--prio">PRIORITAIRE</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- RADAR SYSTÈMES (hard skills) -->
+        <section class="panel radar-section radar-systems">
+            <div class="panel-header">
+                <div>
+                    <div class="panel-kicker">hard skills</div>
+                    <h2 class="panel-title">Radar Systèmes</h2>
+                </div>
+                <span class="panel-status">Systèmes opérationnels</span>
+            </div>
+
+            <div class="radar-layout">
+                <!-- RADAR -->
+                <div class="radar-display">
+                    <div class="radar-ring"></div>
+                    <div class="radar-ring"></div>
+                    <div class="radar-ring"></div>
+                    <div class="radar-sweep"></div>
+
+                    <!-- 6 points + codes -->
+                    <div class="radar-dot dot-1"></div>
+                    <span class="radar-code-inside code-fe">FE-CORE</span>
+
+                    <div class="radar-dot dot-2"></div>
+                    <span class="radar-code-inside code-js">JS-ES6</span>
+
+                    <div class="radar-dot dot-3"></div>
+                    <span class="radar-code-inside code-react">RE-TS</span>
+
+                    <div class="radar-dot dot-4"></div>
+                    <span class="radar-code-inside code-gsap">ANIM-GS</span>
+
+                    <div class="radar-dot dot-5"></div>
+                    <span class="radar-code-inside code-php">BE-PHP</span>
+
+                    <div class="radar-dot dot-6"></div>
+                    <span class="radar-code-inside code-uxops">UX-OPS</span>
+                </div>
+
+                <!-- LÉGENDE -->
+                <div class="radar-legend radar-legend--align">
+                    <div class="radar-item">
+                        <span class="radar-code">FE-CORE</span>
+                        <div class="radar-text">
+                            <span class="radar-label">Front-End core (HTML5 / CSS3 / SASS)</span>
+                            <span class="radar-detail">Intégration responsive, animations et bonnes pratiques.</span>
+                        </div>
+                        <span class="radar-status radar-status--prio">PRIORITAIRE</span>
+                    </div>
+
+                    <div class="radar-item">
+                        <span class="radar-code">JS-ES6</span>
+                        <div class="radar-text">
+                            <span class="radar-label">JavaScript (ES6+)</span>
+                            <span class="radar-detail">Logique front, composants dynamiques, appels API.</span>
+                        </div>
+                        <span class="radar-status radar-status--stable">STABLE</span>
+                    </div>
+
+                    <div class="radar-item">
+                        <span class="radar-code">RE-TS</span>
+                        <div class="radar-text">
+                            <span class="radar-label">React.js & TypeScript</span>
+                            <span class="radar-detail">Projets en cours, consolidation des bases typées.</span>
+                        </div>
+                        <span class="radar-status radar-status--stable">EN APPROCHE</span>
+                    </div>
+
+                    <div class="radar-item">
+                        <span class="radar-code">ANIM-GS</span>
+                        <div class="radar-text">
+                            <span class="radar-label">GSAP (animations)</span>
+                            <span class="radar-detail">Animations ciblées pour interfaces de type cockpit.</span>
+                        </div>
+                        <span class="radar-status radar-status--stable">EN APPROCHE</span>
+                    </div>
+
+                    <div class="radar-item">
+                        <span class="radar-code">BE-PHP</span>
+                        <div class="radar-text">
+                            <span class="radar-label">Back-End PHP / Laravel / Symfony</span>
+                            <span class="radar-detail">Bases de développement et projets guidés en formation.</span>
+                        </div>
+                        <span class="radar-status radar-status--stable">EN APPROCHE</span>
+                    </div>
+
+                    <div class="radar-item">
+                        <span class="radar-code">UX-OPS</span>
+                        <div class="radar-text">
+                            <span class="radar-label">Outils & UX (Figma, Canva, Git)</span>
+                            <span class="radar-detail">Design d’interfaces, maquettes et gestion de versions.</span>
+                        </div>
+                        <span class="radar-status radar-status--stable">STABLE</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLAN DE VOL — MISSIONS RÉALISÉES -->
+        <section class="panel flight-section">
+            <section class="panel flight-section">
+                <div class="panel-header">
+                    <div>
+                        <div class="panel-kicker">Expériences professionnelles</div>
+                        <h2 class="panel-title">Journal de bord des missions réalisées</h2>
+                    </div>
+                    <span class="panel-status">Historique de vol</span>
+                </div>
+
+                <div class="flight-timeline">
+                    <div class="flight-line"></div>
+
+                    <!-- Avion animé -->
+                    <svg class="plane-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M21 16v-2l-8-5V3.5C13 2.67 12.33 2 11.5 2S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5L21 16z" />
+                    </svg>
+
+                    <!-- 2023–2024 : FoodEatUp / BraindCode -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2023 — 2024</div>
+                            <h3 class="flight-title">Développeur Backend Laravel & Gestion de projet (Stage)</h3>
+                            <div class="flight-company">FoodEatUp / BraindCode — Levallois-Perret</div>
+                            <p>
+                                Pilotage de projets pour Cook'n'Way, FKM Mobilité et Cami Courses Express : réunions
+                                clients,
+                                recueil des besoins, rédaction de cahiers des charges et coordination avec les équipes
+                                techniques. Développement de fonctionnalités Laravel pour un logiciel de caisse, audits
+                                SEO,
+                                refonte de sites et suivi Analytics / Search Console.
+                            </p>
+                            <span class="flight-status-badge">Mode : Commandant de bord</span>
+                        </div>
+                    </article>
+
+                    <!-- 2023 : École O’Clock -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2023</div>
+                            <h3 class="flight-title">Développeur Web & Mobile (React / TypeScript / Symfony)</h3>
+                            <div class="flight-company">École O’Clock — Paris</div>
+                            <p>
+                                Bootcamp intensif orienté React, TypeScript et Symfony. Projet “Sport Live” en Agile
+                                Scrum :
+                                interfaces React/TS, participation au cahier des charges, versioning et coordination
+                                d’équipe.
+                            </p>
+                            <span class="flight-status-badge">Mode : Vol long courrier</span>
+                        </div>
+                    </article>
+
+                    <!-- 2021–2022 : OpenClassrooms -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2021 — 2022</div>
+                            <h3 class="flight-title">Développeur Web & Mobile</h3>
+                            <div class="flight-company">OpenClassrooms — Paris</div>
+                            <p>
+                                Réalisation de projets guidés : Booki (intégration complète de maquette),
+                                OhMyFood (animations avancées CSS/SASS) et La Panthère (audit SEO et refonte complète).
+                                Première consolidation des bases HTML/CSS/JS et des bonnes pratiques front.
+                            </p>
+                            <span class="flight-status-badge">Mode : Vol d’essai</span>
+                        </div>
+                    </article>
+
+                    <!-- 2020–2021 : Période Covid -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2020 — 2021</div>
+                            <h3 class="flight-title">Période Covid — Préparation de reconversion</h3>
+                            <div class="flight-company">Épinay-sur-Seine</div>
+                            <p>
+                                Confinements successifs, début de veille technologique et réflexion approfondie
+                                sur une reconversion vers les métiers du numérique.
+                            </p>
+                            <span class="flight-status-badge">Mode : Préparation de vol</span>
+                        </div>
+                    </article>
+
+                    <!-- 2017–2019 : Projet d’écriture -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2017 — 2019</div>
+                            <h3 class="flight-title">Projet d’écriture</h3>
+                            <div class="flight-company">Épinay-sur-Seine</div>
+                            <p>
+                                Travail personnel structuré autour de la rédaction d’un roman (en cours) :
+                                organisation, persévérance et créativité sur un projet long terme.
+                            </p>
+                            <span class="flight-status-badge">Mode : Croisière créative</span>
+                        </div>
+                    </article>
+
+                    <!-- 2017 : Café Joly -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2017</div>
+                            <h3 class="flight-title">Barman</h3>
+                            <div class="flight-company">Café Joly — Paris</div>
+                            <p>
+                                Mise en place du bar, création de cartes et réalisation de cocktails sur mesure,
+                                contact direct et régulier avec la clientèle.
+                            </p>
+                            <span class="flight-status-badge">Mode : Service en cabine</span>
+                        </div>
+                    </article>
+
+                    <!-- 2013–2016 : Transition professionnelle & projets perso -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2013 — 2016</div>
+                            <h3 class="flight-title">Transition professionnelle & projets personnels</h3>
+                            <div class="flight-company">Épinay-sur-Seine</div>
+                            <p>
+                                Réflexion sur une reconversion vers le numérique, veille technologique (bases du
+                                développement
+                                web : HTML/CSS), travail sur la résilience et l’adaptabilité, projets d’écriture et
+                                définition
+                                d’un nouveau projet professionnel.
+                            </p>
+                            <span class="flight-status-badge">Mode : Préparation de vol</span>
+                        </div>
+                    </article>
+
+                    <!-- 2012 : Hôtel Normandy -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2012</div>
+                            <h3 class="flight-title">Chef barman intérimaire</h3>
+                            <div class="flight-company">Hôtel Normandy — Paris</div>
+                            <p>
+                                Encadrement de l’équipe bar, création de cartes et de cocktails signatures,
+                                accueil d’une clientèle haut de gamme.
+                            </p>
+                            <span class="flight-status-badge">Mode : Service premium</span>
+                        </div>
+                    </article>
+
+                    <!-- 2011 : Why-Paris -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2011</div>
+                            <h3 class="flight-title">Barman</h3>
+                            <div class="flight-company">Why-Paris — Paris</div>
+                            <p>
+                                Mise en place, création de cartes et cocktails sur mesure, gestion de l’ambiance au bar.
+                            </p>
+                            <span class="flight-status-badge">Mode : Croisière</span>
+                        </div>
+                    </article>
+
+                    <!-- 2009–2010 : Kube Hôtel (Ice Bar) -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2009 — 2010</div>
+                            <h3 class="flight-title">Barman Ice Bar (Stage)</h3>
+                            <div class="flight-company">Kube Hôtel — Paris</div>
+                            <p>
+                                Création de cocktails et service en environnement extrême : bar à -15°C, verres en
+                                glace,
+                                gestion de flux clients dans un concept expérientiel.
+                            </p>
+                            <span class="flight-status-badge">Mode : Service en conditions extrêmes</span>
+                        </div>
+                    </article>
+
+                    <!-- 2009 : Restaurant Le Bond -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2009</div>
+                            <h3 class="flight-title">Chef de rang (Stage)</h3>
+                            <div class="flight-company">Restaurant Le Bond, Avenue George V — Paris</div>
+                            <p>
+                                Gestion autonome d’un rang de 75 tables, coordination avec la cuisine et le personnel de
+                                salle,
+                                service haut de gamme et recommandations mets-vins.
+                            </p>
+                            <span class="flight-status-badge">Mode : Service de première classe</span>
+                        </div>
+                    </article>
+
+                    <!-- 2004–2009 : Période personnelle -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2004 — 2009</div>
+                            <h3 class="flight-title">Période personnelle</h3>
+                            <div class="flight-company">Île-de-France</div>
+                            <p>
+                                Éloignement temporaire du marché du travail pour raisons personnelles. Réflexion et
+                                recentrage
+                                avant reprise d’activité.
+                            </p>
+                            <span class="flight-status-badge">Mode : Escale technique</span>
+                        </div>
+                    </article>
+
+                    <!-- 2003 : Disneyland Paris (Hôte d’accueil) -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2003</div>
+                            <h3 class="flight-title">Hôte d’accueil touristique</h3>
+                            <div class="flight-company">Disneyland Paris</div>
+                            <p>
+                                Orientation des visiteurs, gestion des flux, informations et accompagnement sur site.
+                            </p>
+                            <span class="flight-status-badge">Mode : Accueil au sol</span>
+                        </div>
+                    </article>
+
+                    <!-- 2001–2002 : Zara -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2001 — 2002</div>
+                            <h3 class="flight-title">Caissier auxiliaire & Responsable réserve</h3>
+                            <div class="flight-company">Zara — La Défense</div>
+                            <p>
+                                Encaissement, inventaires, gestion de stock et réassort, coordination entre réserve et
+                                surface de vente.
+                            </p>
+                            <span class="flight-status-badge">Mode : Logistique embarquée</span>
+                        </div>
+                    </article>
+
+                    <!-- 2000–2001 : H&M -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">2000 — 2001</div>
+                            <h3 class="flight-title">Caissier vendeur</h3>
+                            <div class="flight-company">H&M — La Défense</div>
+                            <p>
+                                Réassort, encaissement, présentation en boutique et conseil client.
+                            </p>
+                            <span class="flight-status-badge">Mode : Vol commercial</span>
+                        </div>
+                    </article>
+
+                    <!-- 1998–2000 : RATP -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">1998 — 2000</div>
+                            <h3 class="flight-title">Agent de régulation RER A (CES)</h3>
+                            <div class="flight-company">RATP — Paris</div>
+                            <p>
+                                Gestion du flux voyageurs, sécurité des portes et information des usagers sur le RER A.
+                            </p>
+                            <span class="flight-status-badge">Mode : Gestion du trafic</span>
+                        </div>
+                    </article>
+
+                    <!-- 1996–1997 : Mairie d’Épinay -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">1996 — 1997</div>
+                            <h3 class="flight-title">Agent d’accueil</h3>
+                            <div class="flight-company">Mairie d’Épinay-sur-Seine</div>
+                            <p>
+                                Accueil du public, orientation, gestion de courriers et suivi de dossiers d’état civil.
+                            </p>
+                            <span class="flight-status-badge">Mode : Accueil au sol</span>
+                        </div>
+                    </article>
+
+                    <!-- 1996 : Disneyland Paris (Employé mini-bars) -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">1996</div>
+                            <h3 class="flight-title">Employé d’étage (mini-bars)</h3>
+                            <div class="flight-company">Disneyland Paris</div>
+                            <p>
+                                Réassort et contrôle des mini-bars, respect des standards Disney.
+                            </p>
+                            <span class="flight-status-badge">Mode : Service cabine</span>
+                        </div>
+                    </article>
+
+                    <!-- 1994–1995 : Clubs Aquarius -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">1994 — 1995</div>
+                            <h3 class="flight-title">Animateur</h3>
+                            <div class="flight-company">Clubs Aquarius — Les 2 Alpes & Le Lavandou</div>
+                            <p>
+                                Organisation d’activités, animation de journées et de soirées, création d’ambiance
+                                client.
+                            </p>
+                            <span class="flight-status-badge">Mode : Animation de bord</span>
+                        </div>
+                    </article>
+
+                    <!-- 1994 : Disneyland Paris (Valet de chambre) -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">1994</div>
+                            <h3 class="flight-title">Valet de chambre</h3>
+                            <div class="flight-company">Disneyland Paris</div>
+                            <p>
+                                Entretien des chambres et respect des standards qualité de l’hôtel Disney.
+                            </p>
+                            <span class="flight-status-badge">Mode : Service cabine</span>
+                        </div>
+                    </article>
+
+                    <!-- 1993 : Disneyland Paris (Hôte de nettoyage) -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">1993</div>
+                            <h3 class="flight-title">Hôte de nettoyage</h3>
+                            <div class="flight-company">Disneyland Paris</div>
+                            <p>
+                                Entretien des espaces publics, support visiteurs et maintien d’un environnement propre.
+                            </p>
+                            <span class="flight-status-badge">Mode : Support au sol</span>
+                        </div>
+                    </article>
+
+                    <!-- 1991–1992 : CNMSS Toulon -->
+                    <article class="flight-item">
+                        <div class="flight-marker"></div>
+                        <div class="flight-content">
+                            <div class="flight-date">1991 & 1992</div>
+                            <h3 class="flight-title">Agent saisonnier</h3>
+                            <div class="flight-company">Caisse Nationale Militaire de Sécurité Sociale — Toulon</div>
+                            <p>
+                                Accueil, traitement administratif et saisie de données pour la sécurité sociale
+                                militaire.
+                            </p>
+                            <span class="flight-status-badge">Mode : Premiers vols</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- PLAN DE VOL — PARCOURS & CERTIFICATIONS -->
+            <!-- CERTIFICATS DE PILOTAGE -->
+            <section class="panel training-section">
+                <div class="panel-header">
+                    <div>
+                        <div class="panel-kicker">Formations & certifications</div>
+                        <h2 class="panel-title">Certificats de pilotage</h2>
+                    </div>
+                    <span class="panel-status">Mises à jour régulières</span>
+                </div>
+
+                <div class="training-grid-cards">
+                    <!-- 2023 : Titre pro O'Clock -->
+                    <article class="training-card">
+                        <div class="training-type">Titre pro NV5</div>
+                        <h3 class="training-name">Développeur Web PHP</h3>
+                        <div class="training-org">École O’Clock — Paris</div>
+                        <div class="training-date">Mars 2023 — Septembre 2023</div>
+                        <p style="margin-top:8px; font-size:0.85rem; color:var(--text-dim);">
+                            Formation complète HTML, CSS, JavaScript avec spécialisation Symfony / React / TypeScript.
+                            Projet “Apothéose” en fin de cursus.
+                        </p>
+                    </article>
+
+                    <!-- 2021–2022 : OpenClassrooms -->
+                    <article class="training-card">
+                        <div class="training-type">Parcours NV5</div>
+                        <h3 class="training-name">Développeur Web & Mobile</h3>
+                        <div class="training-org">OpenClassrooms — Paris</div>
+                        <div class="training-date">Novembre 2021 — Mai 2022</div>
+                        <p style="margin-top:8px; font-size:0.85rem; color:var(--text-dim);">
+                            Conception et développement d’applications web et mobiles. Consolidation des fondamentaux
+                            front et back.
+                        </p>
+                    </article>
+
+                    <!-- 2010 : MC Barman -->
+                    <article class="training-card">
+                        <div class="training-type">Mention compl. NV3</div>
+                        <h3 class="training-name">Mention Complémentaire Barman</h3>
+                        <div class="training-org">GRETA — Paris</div>
+                        <div class="training-date">2010</div>
+                        <p style="margin-top:8px; font-size:0.85rem; color:var(--text-dim);">
+                            Techniques de bar en restauration et hôtels haut de gamme : cocktails classiques &
+                            signatures, mise
+                            en place, accueil et conseil client.
+                        </p>
+                    </article>
+
+                    <!-- 2009 : Garçon serveur semi-gastro -->
+                    <article class="training-card">
+                        <div class="training-type">Formation NV3</div>
+                        <h3 class="training-name">Serveur semi-gastronomique</h3>
+                        <div class="training-org">AFPA — Champs-sur-Marne</div>
+                        <div class="training-date">2009</div>
+                        <p style="margin-top:8px; font-size:0.85rem; color:var(--text-dim);">
+                            Service en restauration haut de gamme : différents types de service, accueil, dressage,
+                            recommandations
+                            mets-vins.
+                        </p>
+                    </article>
+
+                    <!-- 1997 : Pré-embauche commis -->
+                    <article class="training-card">
+                        <div class="training-type">Pré-embauche</div>
+                        <h3 class="training-name">Commis de salle & de bar</h3>
+                        <div class="training-org">Restaurants Les Frères Blanc</div>
+                        <div class="training-date">Avril — Mai 1997</div>
+                        <p style="margin-top:8px; font-size:0.85rem; color:var(--text-dim);">
+                            Assistance au service en salle et au bar : mise en place, soutien au chef de rang, entretien
+                            du
+                            matériel, participation aux cocktails.
+                        </p>
+                    </article>
+
+                    <!-- 1990–1992 : CAP / BEP -->
+                    <article class="training-card">
+                        <div class="training-type">Parcours initial NV3</div>
+                        <h3 class="training-name">CAP & BEP administratifs / commerciaux</h3>
+                        <div class="training-org">CAP Employé des services administratifs & commerciaux — 1990<br>
+                            BEP Vente Action Marchande — 1992</div>
+                        <div class="training-date">1990 — 1992</div>
+                        <p style="margin-top:8px; font-size:0.85rem; color:var(--text-dim);">
+                            Bases administratives, commerciales et relation client.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- LANGUES & CENTRES D’INTÉRÊT
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <div class="panel-kicker">Systèmes de communication</div>
+                        <h2 class="panel-title">Langues & centres d’intérêt</h2>
+                    </div>
+                </div>
+
+                <div class="lang-interests">
+                    <div class="lang-block">
+                        <h3>Langues</h3>
+                        <ul>
+                            <li><strong>Français</strong> — natif</li>
+                            <li><strong>Anglais</strong> — notions</li>
+                        </ul>
+                    </div>
+
+                    <div class="interest-block">
+                        <h3>Centres d’intérêt</h3>
+                        <ul>
+                            <li>Veille technologique (web, IA, outils front)</li>
+                            <li>Tourisme & découverte</li>
+                            <li>Technologies web</li>
+                            <li>Écriture (projets narratifs / roman)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section> -->
+            <!-- SYSTÈMES DE COMMUNICATION -->
+            <section class="panel comms-panel">
+                <div class="panel-header">
+                    <div>
+                        <div class="panel-kicker">Systèmes de communication</div>
+                        <h2 class="panel-title">Langues & centres d’intérêt</h2>
+                    </div>
+                </div>
+
+                <div class="comms-grid">
+                    <!-- Langues -->
+                    <div class="comms-column">
+                        <h3 class="comms-title">Canaux linguistiques</h3>
+
+                        <div class="comms-tag">
+                            <span class="comms-code">FR</span>
+                            <span class="comms-label">Français — natif</span>
+                            <span class="comms-status comms-status--primary">Canal principal</span>
+                        </div>
+
+                        <div class="comms-tag">
+                            <span class="comms-code">EN</span>
+                            <span class="comms-label">Anglais — notions</span>
+                            <span class="comms-status comms-status--secondary">Canal secondaire</span>
+                        </div>
+                    </div>
+
+                    <!-- Centres d'intérêt -->
+                    <div class="comms-column">
+                        <h3 class="comms-title">Signaux secondaires</h3>
+
+                        <div class="comms-tag">
+                            <span class="comms-code">TECH</span>
+                            <span class="comms-label">Veille technologique (web, IA, outils front)</span>
+                        </div>
+
+                        <div class="comms-tag">
+                            <span class="comms-code">TRAVEL</span>
+                            <span class="comms-label">Tourisme & découverte</span>
+                        </div>
+
+                        <div class="comms-tag">
+                            <span class="comms-code">WEB</span>
+                            <span class="comms-label">Technologies web</span>
+                        </div>
+
+                        <div class="comms-tag">
+                            <span class="comms-code">WRITE</span>
+                            <span class="comms-label">Écriture (projets narratifs / roman)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- DONNÉES DE VOL -->
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <div class="panel-kicker">Indicateurs de mission</div>
+                        <h2 class="panel-title">Données de vol</h2>
+                    </div>
+                    <span class="panel-status">Temps réel</span>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <div class="stat-value" data-value="41">41</div>
+                        <div class="stat-label">Projets livrés</div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-value" data-value="4">4</div>
+                        <div class="stat-label">Années d'expérience</div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-value" data-value="25">25</div>
+                        <div class="stat-label">Clients satisfaits</div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-value" data-value="1200">1200+</div>
+                        <div class="stat-label">Commits Git</div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- CTA PRÊT POUR LE DÉCOLLAGE ? -->
+            <section class="cta-panel">
+                <div class="cta-inner">
+                    <h2 class="cta-title">PRÊT POUR LE DÉCOLLAGE ?</h2>
+                    <p class="cta-text">
+                        Embarquons ensemble pour votre prochain projet ambitieux. Je suis disponible pour des missions
+                        de
+                        conseil, développement ou formation.
+                    </p>
+                    <a href="contact.html" class="cta-button">DEMANDER AUTORISATION DE VOL</a>
+                </div>
+            </section>
+    </main>
+
+   <footer class="site-footer">
+  <section class="footer-inner" aria-label="Informations de bas de page">
+    <div class="footer-left-block">
+      <div class="runway-visual" aria-hidden="true">
+        <div class="runway-centerline"></div>
+        <div class="runway-lights">
+          <span class="runway-light"></span>
+          <span class="runway-light"></span>
+          <span class="runway-light"></span>
+          <span class="runway-light"></span>
+          <span class="runway-light"></span>
+        </div>
+        <p class="runway-label">RUNWAY 07L</p>
+        <p class="runway-code">07L</p>
+      </div>
+      <p class="piste-lights">
+        <span>&lt;&lt;&lt; ZONE SÉCURISÉE &gt;&gt;&gt;</span>
+        <span>FIN DE PARCOURS / TERMINAL</span>
+      </p>
+    </div>
+
+    <div class="footer-right-block">
+      <div class="status-row">
+        <span class="status-tag">SYSTEM ONLINE</span>
+        <span class="status-tag secondary">READY FOR TAKEOFF</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/CHRISTOPHEHASCOET" target="_blank" rel="noopener noreferrer"
+          aria-label="Aller vers mon profil GitHub (s'ouvre dans un nouvel onglet)">GitHub</a>
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          aria-label="Aller vers mon profil LinkedIn (s'ouvre dans un nouvel onglet)">LinkedIn</a>
+        <span>© 2025 PILOTE DIGITAL — TOUS DROITS RÉSERVÉS</span>
+      </div>
+    </div>
+  </section>
+</footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+
+</html>

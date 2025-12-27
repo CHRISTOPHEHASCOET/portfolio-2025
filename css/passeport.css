@@ -14,6 +14,7 @@
   --bg-gradient: linear-gradient(135deg,
       var(--primary) 0%,
       var(--primary-2) 100%);
+  --gradient: linear-gradient(90deg, #d9dde8 0%, #f6c1b5 40%, #ff3b3b 100%);
 
   /* Dimensions */
   --container-width: 1400px;
@@ -139,8 +140,8 @@ main.container {
 }
 
 .logo img {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: 2px solid var(--accent-bright);
   object-fit: cover;
@@ -151,7 +152,6 @@ main.container {
   font-weight: 700;
   font-size: 1.8rem;
   line-height: 1;
-  color: #fff;
 }
 
 .logo-text-group {
@@ -168,16 +168,15 @@ main.container {
 }
 
 .logo-ops {
-  font-family: var(--font-mono);
+  font-family: var(--font-oswald);
   font-size: 0.65rem;
   letter-spacing: 0.15em;
-  color: var(--text-dim);
 }
 
 .flight-id {
-  font-family: var(--font-mono);
+  font-family: var(--font-oswald);
   font-size: 0.6rem;
-  color: var(--accent-bright);
+  color: var(--gradient);
   letter-spacing: 2px;
   margin-top: 4px;
   display: block;
@@ -195,9 +194,7 @@ main.container {
   pointer-events: none;
   filter: drop-shadow(0 0 5px var(--warning));
   z-index: 1;
-  /* DERRIÈRE la nav */
   opacity: 0.35;
-  /* plus discret */
   font-size: 1rem;
   filter: none;
 }
@@ -206,7 +203,7 @@ main.container {
   position: absolute;
   width: 4px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(139, 85, 85, 0.5);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9;
@@ -224,7 +221,7 @@ main.container {
   font-weight: 700;
   padding: 0.75rem 1.1rem;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  font-size: 10px;
   font-family: var(--font-oswald);
   letter-spacing: 1px;
   position: relative;
@@ -239,8 +236,8 @@ main.container {
 
 /* Numéro de porte dans le bouton */
 .gate-number {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-family: var(--font-oswald);
+  font-size: 6px;
   font-weight: 700;
   color: var(--accent-bright);
   min-width: 36px;
@@ -252,35 +249,32 @@ main.container {
 
 /* Effet de pression au survol */
 .cockpit-btn:hover {
-  color: var(--text);
+  color: var(--accent-bright);
   font-weight: bold;
   border-color: var(--accent);
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(139, 30, 63, 0.15);
 }
 
-.realtime-clock {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--bg-gradient);
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  border: 1px solid rgba(250, 204, 21, 0.3);
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
+/* .realtime-clock {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--bg-gradient);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(250, 204, 21, 0.3);
+    letter-spacing: 1px;
+    white-space: nowrap;
+} */
 
-.nav-desktop {
-  display: flex;
-  gap: 10px;
-}
 
 .nav-label {
   font-family: var(--font-oswald);
   font-size: 0.85rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  color: var(--gradient);
 }
 
 .nav-link {
@@ -372,7 +366,22 @@ main.container {
   font-size: 2.6rem;
   letter-spacing: 5px;
   text-transform: uppercase;
-  color: var(--accent);
+  background: linear-gradient(90deg,
+      #d9dde8 0%,
+      /* gris clair légèrement bleuté */
+      #f6c1b5 40%,
+      /* ton chaud intermédiaire */
+      #ff3b3b 100%
+      /* ton rouge vif cohérent avec --accent-bright */
+    );
+
+  /* Le cœur de l’effet */
+  -webkit-background-clip: text;
+  /* nécessaire pour Chrome / Safari */
+  background-clip: text;
+  /* standard */
+  color: transparent;
+  /* pour que seul le bg apparaisse */
   position: relative;
   display: inline-block;
   margin: 3rem;
@@ -382,11 +391,11 @@ main.container {
   content: "";
   position: absolute;
   bottom: -15px;
-  left:36%;
+  left: 36%;
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: var(--text);
+  background: var(--accent-bright);
 }
 
 /* Dossier pilote amélioré */
@@ -786,203 +795,207 @@ main.container {
    ========================================================================== */
 
 .site-footer {
-  margin-top: auto;
-  padding: 40px 0 30px;
-  background: radial-gradient(circle at top,
-      #020617 0,
-      #020617 40%,
-      #05060a 100%);
-  border-top: 2px solid var(--accent);
+    margin-top: auto;
+    padding: 40px 0 30px;
+    /* background: radial-gradient(circle at top,
+                    #020617 0,
+                    #020617 40%,
+                    #05060a 100%);
+            border-top: 2px solid var(--accent); */
+    border-top: none;
+    box-shadow:
+        inset 0 20px 40px rgba(0, 0, 0, 0.9),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .footer-inner {
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .footer-left-block,
 .footer-right-block {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 .runway-visual {
-  position: relative;
-  width: 260px;
-  height: 50px;
-  background: linear-gradient(to bottom, #020617 0%, #030712 60%, #000 100%);
-  border-radius: 10px;
-  border: 1px solid #1f2937;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8) inset;
-  overflow: hidden;
+    position: relative;
+    width: 260px;
+    height: 50px;
+    background: linear-gradient(to bottom, #020617 0%, #030712 60%, #000 100%);
+    border-radius: 10px;
+    border: 1px solid #1f2937;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8) inset;
+    overflow: hidden;
 }
 
 .runway-centerline {
-  position: absolute;
-  left: 50%;
-  top: 6px;
-  bottom: 6px;
-  width: 4px;
-  transform: translateX(-50%);
-  background: repeating-linear-gradient(to bottom,
-      #f9fafb 0,
-      #f9fafb 10px,
-      transparent 10px,
-      transparent 20px);
-  opacity: 0.9;
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    bottom: 6px;
+    width: 4px;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(to bottom,
+            #f9fafb 0,
+            #f9fafb 10px,
+            transparent 10px,
+            transparent 20px);
+    opacity: 0.9;
 }
 
 .runway-lights {
-  position: absolute;
-  bottom: 6px;
-  left: 10px;
-  right: 10px;
-  display: flex;
-  justify-content: space-between;
+    position: absolute;
+    bottom: 6px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .runway-light {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--accent-bright);
-  box-shadow: 0 0 8px rgba(255, 59, 59, 0.9);
-  animation: blinkLight 1.4s infinite ease-in-out;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--accent-bright);
+    box-shadow: 0 0 8px rgba(255, 59, 59, 0.9);
+    animation: blinkLight 1.4s infinite ease-in-out;
 }
 
 .runway-light:nth-child(2),
 .runway-light:nth-child(4) {
-  background: var(--warning);
-  box-shadow: 0 0 8px rgba(250, 204, 21, 0.9);
-  animation-duration: 1.9s;
+    background: var(--warning);
+    box-shadow: 0 0 8px rgba(250, 204, 21, 0.9);
+    animation-duration: 1.9s;
 }
 
 .status-row {
-  display: flex;
-  gap: 0.6rem;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  align-items: center;
-  /* Pour bien aligner l'horloge avec les tags */
+    display: flex;
+    gap: 0.6rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+    /* Pour bien aligner l'horloge avec les tags */
 }
 
 .realtime-clock {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  /* Taille un peu plus petite pour le footer */
-  color: var(--warning);
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  border: 1px solid rgba(250, 204, 21, 0.3);
-  letter-spacing: 1px;
-  white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    /* Taille un peu plus petite pour le footer */
+    color: var(--warning);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(250, 204, 21, 0.3);
+    letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 @keyframes blinkLight {
 
-  0%,
-  100% {
-    opacity: 0.2;
-    transform: translateY(0);
-  }
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: translateY(0);
+    }
 
-  50% {
-    opacity: 1;
-    transform: translateY(-1px);
-  }
+    50% {
+        opacity: 1;
+        transform: translateY(-1px);
+    }
 }
 
 .runway-label,
 .runway-code {
-  position: absolute;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: #e5e7eb;
-  letter-spacing: 0.12em;
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: #e5e7eb;
+    letter-spacing: 0.12em;
 }
 
 .runway-label {
-  top: 8px;
-  left: 12px;
+    top: 8px;
+    left: 12px;
 }
 
 .runway-code {
-  top: 16px;
-  right: 12px;
-  font-family: var(--font-oswald);
-  font-size: 1rem;
-  color: var(--accent-bright);
+    top: 16px;
+    right: 12px;
+    font-family: var(--font-oswald);
+    font-size: 1rem;
+    color: var(--accent-bright);
 }
 
 .piste-lights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  color: var(--accent-bright);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    color: var(--accent-bright);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
 }
 
 .status-row {
-  display: flex;
-  gap: 0.6rem;
-  justify-content: flex-end;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 0.6rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .status-tag {
-  background: rgba(255, 59, 59, 0.08);
-  padding: 0.3rem 0.9rem;
-  border: 1px solid var(--accent-bright);
-  color: var(--accent-bright);
-  font-size: 0.7rem;
-  border-radius: 4px;
-  text-transform: uppercase;
-  font-family: var(--font-mono);
+    background: rgba(255, 59, 59, 0.08);
+    padding: 0.3rem 0.9rem;
+    border: 1px solid var(--accent-bright);
+    color: var(--accent-bright);
+    font-size: 0.7rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
 }
 
 .status-tag.secondary {
-  border-color: var(--warning);
-  color: var(--warning);
-  background: rgba(250, 204, 21, 0.08);
+    border-color: var(--warning);
+    color: var(--warning);
+    background: rgba(250, 204, 21, 0.08);
 }
 
 .footer-links {
-  display: flex;
-  gap: 0.9rem;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  align-items: center;
+    display: flex;
+    gap: 0.9rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .footer-links a {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  transition: color 0.2s ease;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    transition: color 0.2s ease;
 }
 
 .footer-links a:hover,
 .footer-links a:focus {
-  color: var(--accent-bright);
-  outline: 2px solid var(--accent-bright);
-  outline-offset: 2px;
+    color: var(--accent-bright);
+    outline: 2px solid var(--accent-bright);
+    outline-offset: 2px;
 }
 
 .footer-links span {
-  font-size: 0.7rem;
-  color: var(--text-dim);
+    font-size: 0.7rem;
+    color: var(--text-dim);
 }
 
 /* ==========================================================================

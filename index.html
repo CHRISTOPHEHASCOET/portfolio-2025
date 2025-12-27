@@ -66,6 +66,11 @@
           <span class="nav-label">POSTE DE PILOTAGE</span>
         </a>
 
+        <a href="profile.html" class="nav-link cockpit-btn" data-gate="E05">
+          <span class="gate-number">E05</span>
+          <span class="nav-label">POSTE DE PILOTAGE</span>
+        </a>
+
         <a href="contact.html" class="nav-link cockpit-btn" data-gate="F06">
           <span class="gate-number">F06</span>
           <span class="nav-label">TOUR DE CONTRÔLE</span>
@@ -111,9 +116,9 @@
 
       <table class="board" aria-describedby="departures-intro">
         <div class="board-clock" aria-label="Heure UTC en temps réel">
-              <span class="clock-label">UTC</span>
-              <span id="realtime-clock">--:--:--</span>
-            </div>
+          <span class="clock-label">UTC</span>
+          <span id="realtime-clock">--:--:--</span>
+        </div>
         <caption class="visually-hidden">
           Tableau de bord présentant mes missions, compétences et statuts.
         </caption>
@@ -121,17 +126,17 @@
 
           <tr>
             <!-- NOUVEAUX EN-TÊTES DE COLONNES -->
-           
+
             <th scope="col" class="col-head col-vol">VOL</th>
             <th scope="col" class="col-head col-dest">DESTINATION</th>
-             
+
             <th scope="col" class="col-head col-time">EMBARQUEMENT</th>
             <th scope="col" class="col-head col-gate">PORTE</th>
             <th scope="col" class="col-head col-obs">OBSRVATIONS</th>
           </tr>
         </thead>
         <tbody id="board-body">
-          <!-- Les lignes sont générées en JavaScript -->
+          <!-- Les lignes de vol seront insérées ici dynamiquement via JavaScript -->
         </tbody>
       </table>
     </section>
@@ -161,12 +166,9 @@
       <div class="footer-right-block">
         <div class="status-row">
           <span class="status-tag">SYSTEM ONLINE</span>
-          <span class="status-tag secondary">AUTORISATION DE DÉCOLLAGE DISPONIBLE</span>
+          <span class="status-tag secondary">READY FOR TAKEOFF</span>
         </div>
         <div class="footer-links">
-          <a href="contact.html" class="status-tag secondary" aria-label="Aller vers la page de contact">
-            CONTACTER LA TOUR DE CONTRÔLE
-          </a>
           <a href="https://github.com/CHRISTOPHEHASCOET" target="_blank" rel="noopener noreferrer"
             aria-label="Aller vers mon profil GitHub (s'ouvre dans un nouvel onglet)">GitHub</a>
           <a href="#" target="_blank" rel="noopener noreferrer"
