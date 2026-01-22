@@ -251,3 +251,258 @@ if (document.readyState === 'loading') {
 }
 
 export { init, TransmissionController };
+
+ // =========================================================
+// HORLOGE TEMPS RÉEL
+// =========================================================
+
+const updateRealtimeClock = () => {
+  const clockElement = document.getElementById("realtime-clock");
+  if (!clockElement) return;
+  const now = new Date();
+  const hours = String(now.getUTCHours()).padStart(2, "0");
+  const minutes = String(now.getUTCMinutes()).padStart(2, "0");
+  const seconds = String(now.getUTCSeconds()).padStart(2, "0");
+  clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+};
+
+// Animation d'entrée façon "distributeur de billets"
+window.addEventListener("load", () => {
+  gsap.fromTo(
+    ".ticket",
+    { opacity: 0, x: -120, rotationZ: -2 },
+    {
+      opacity: 1,
+      x: 0,
+      rotationZ: 0,
+      duration: 0.9,
+      ease: "power3.out",
+      stagger: 0.25
+    }
+  );
+});
+// contact.js (ES module)
+
+// Remplace par ton email réel
+const EMAIL_TO = "chryseb@gmail.com";
+
+const form = document.getElementById("contactForm");
+const ack = document.getElementById("acknowledgment");
+
+const nameEl = document.getElementById("callsign");
+const emailEl = document.getElementById("email");
+const messageEl = document.getElementById("message");
+
+function getErrorEl(forId) {
+  return document.querySelector(`[data-error-for="${forId}"]`);
+}
+
+function setError(input, message) {
+  const out = getErrorEl(input.id);
+  if (out) out.textContent = message || "";
+  input.setAttribute("aria-invalid", message ? "true" : "false");
+}
+
+function clearErrors() {
+  setError(nameEl, "");
+  setError(emailEl, "");
+  setError(messageEl, "");
+}
+
+function validate() {
+  clearErrors();
+  let ok = true;
+
+  if (!nameEl.value.trim()) {
+    setError(nameEl, "Veuillez indiquer votre nom.");
+    ok = false;
+  }
+
+  if (!emailEl.value.trim()) {
+    setError(emailEl, "Veuillez indiquer votre email.");
+    ok = false;
+  } else if (!emailEl.checkValidity()) {
+    setError(emailEl, "Format d’email invalide.");
+    ok = false;
+  }
+
+  if (!messageEl.value.trim()) {
+    setError(messageEl, "Veuillez écrire un message.");
+    ok = false;
+  }
+
+  return ok;
+}
+
+function showAck() {
+  if (!ack) return;
+  ack.hidden = false;
+  window.setTimeout(() => {
+    ack.hidden = true;
+  }, 3200);
+}
+
+function buildMailto({ name, email, message }) {
+  const subject = `Contact portfolio — Transmission (${name})`;
+  const body =
+`Bonjour,
+
+Nom : ${name}
+Email : ${email}
+
+Message :
+${message}
+
+— Envoyé depuis la page Tour de contrôle`;
+
+  const params = new URLSearchParams({ subject, body });
+  return `mailto:${encodeURIComponent(EMAIL_TO)}?${params.toString()}`;
+}
+
+if (form) {
+  form.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    const payload = {
+      name: nameEl.value.trim(),
+      email: emailEl.value.trim(),
+      message: messageEl.value.trim(),
+    };
+
+    showAck();
+
+    // Portfolio statique : ouverture du client mail
+    window.location.href = buildMailto(payload);
+
+    form.reset();
+    clearErrors();
+  });
+}
+
+
+// =========================================================
+// ANIMATION DE L'AVION DANS LA NAVIGATION
+// =========================================================
+const initPlaneNavAnimation = () => {
+  const plane = document.getElementById("plane");
+  const navContainer = document.getElementById("nav-container");
+  if (!plane || !navContainer || !window.gsap) return;
+
+  // Animation au repos de l'avion
+  let idleTween = gsap.to(plane, {
+    x: 10,
+    duration: 2.5,
+    yoyo: true,
+    repeat: -1,
+    ease: "sine.inOut",
+  });
+
+  // Création du sillage
+  const createTrail = () => {
+    const trail = document.createElement("span");
+    trail.className = "trail";
+    navContainer.appendChild(trail);
+    const rect = plane.getBoundingClientRect();
+    const parent = navContainer.getBoundingClientRect();
+    gsap.set(trail, {
+      left: rect.left - parent.left + 10,
+      top: rect.top - parent.top + 10,
+    });
+    gsap.to(trail, {
+      opacity: 0,
+      scale: 3,
+      x: -15,
+      duration: 0.6,
+      onComplete: () => trail.remove(),
+    });
+  };
+
+  let trailInt;
+
+  // Interaction sur les liens de navigation
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+      const lRect = link.getBoundingClientRect();
+      const pRect = navContainer.getBoundingClientRect();
+      const targetX = lRect.left - pRect.left + lRect.width / 2 - 10;
+      idleTween.pause();
+      trailInt = setInterval(createTrail, 40);
+      gsap.to(plane, {
+        left: targetX,
+        rotation: 15,
+        scale: 1.4,
+        duration: 0.5,
+        ease: "power2.out",
+        onComplete: () => gsap.to(plane, { rotation: 0, duration: 0.2 }),
+      });
+      gsap.to(link, { opacity: 0.5, repeat: -1, yoyo: true, duration: 0.15 });
+    });
+
+    link.addEventListener("mouseleave", () => {
+      clearInterval(trailInt);
+      gsap.killTweensOf(link);
+      gsap.to(link, { opacity: 1, duration: 0.2 });
+    });
+  });
+
+  // Retour de l'avion à sa position initiale
+  navContainer.addEventListener("mouseleave", () => {
+    clearInterval(trailInt);
+    gsap.to(plane, {
+      left: 140, // Position ajustée pour ne pas cacher les boutons
+      scale: 1,
+      duration: 0.8,
+      ease: "power2.inOut",
+      onComplete: () => idleTween.restart(),
+    });
+  });
+};
+
+// =========================================================
+// MICRO-INTERACTIONS : CLIGNOTEMENT DES NUMÉROS DE PORTE
+// =========================================================
+// const initGateInteractions = () => {
+//   const navLinks = document.querySelectorAll(".nav-link");
+//   if (!navLinks.length) return;
+
+//   navLinks.forEach((link) => {
+//     let blinkInterval;
+//     const gateNumber = link.querySelector(".gate-number");
+//     if (!gateNumber) return;
+
+//     link.addEventListener("mouseenter", () => {
+//       // Clignotement du numéro de porte entre rouge et jaune
+//       blinkInterval = setInterval(() => {
+//         gateNumber.style.color = gateNumber.style.color === "#ff3b3b" ? "#facc15" : "#ff3b3b";
+//       }, 500);
+//     });
+
+//     link.addEventListener("mouseleave", () => {
+//       clearInterval(blinkInterval);
+//       gateNumber.style.color = "#ff3b3b";
+//     });
+//   });
+// };
+
+// =========================================================
+// INITIALISATION GLOBALE
+// =========================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateRealtimeClock();
+  setInterval(updateRealtimeClock, 1000);
+  initPlaneNavAnimation();
+
+});
+
+window.addEventListener("load", () => {
+  animateDoorsAndBoard();
+});

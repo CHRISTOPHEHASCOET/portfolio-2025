@@ -1,3 +1,7 @@
+/* ==========================================================================
+   1. VARIABLES ET CONFIGURATION GLOBALE
+   ========================================================================== */
+
 :root {
     /* Palette de couleurs */
     --primary: #0a0e27;
@@ -24,11 +28,19 @@
     --font-mono: "JetBrains Mono", monospace;
 }
 
+/* ==========================================================================
+   2. RÉINITIALISATION ET STYLES DE BASE
+   ========================================================================== */
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
+
+/* html {
+  scroll-behavior: smooth; 
+} */
 
 body {
     margin: 0;
@@ -66,11 +78,6 @@ img {
     border: 0;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════
-   TOUR DE CONTRÔLE — PAGE CONTACT
-   Utilise UNIQUEMENT les variables définies dans base.css
-   ═══════════════════════════════════════════════════════════════════════ */
-/* NAV — composant réutilisable */
 /* ==========================================================================
    3. LAYOUT PRINCIPAL
    ========================================================================== */
@@ -96,10 +103,7 @@ img {
     border: 1px solid rgba(255, 59, 59, 0.3);
     border-bottom: 3px solid var(--accent);
     border-radius: 12px;
-    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); */
-    box-shadow:
-        inset 0 -1px 0 rgba(255, 255, 255, 0.06),
-        inset 0 -6px 12px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 main {
@@ -108,6 +112,26 @@ main {
     /* Espace pour le header fixe */
 }
 
+/* =========================================================
+   CONTAINER MAIN
+   ========================================================= */
+main.container {
+    flex: 1;
+    padding-top: 140px;
+    padding-bottom: 80px;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* ==========================================================================
+   4. HEADER & NAVIGATION
+   ========================================================================== */
 
 .logo {
     display: flex;
@@ -116,8 +140,8 @@ main {
 }
 
 .logo img {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     border: 2px solid var(--accent-bright);
     object-fit: cover;
@@ -128,13 +152,31 @@ main {
     font-weight: 700;
     font-size: 1.8rem;
     line-height: 1;
-    color: #fff;
+}
+
+.logo-text-group {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-terminal {
+    font-family: var(--font-oswald);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    color: var(--text);
+}
+
+.logo-ops {
+    font-family: var(--font-oswald);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
 }
 
 .flight-id {
-    font-family: var(--font-mono);
+    font-family: var(--font-oswald);
     font-size: 0.6rem;
-    color: var(--accent-bright);
+    color: var(--gradient);
     letter-spacing: 2px;
     margin-top: 4px;
     display: block;
@@ -143,27 +185,30 @@ main {
 /* Avion animé */
 .plane-animated {
     position: absolute;
-    left: 140px;
-    /* Décalé à gauche pour ne pas cacher les boutons */
-    top: 50%;
+    top: 100%;
+    margin-top: 6px;
+    left: 180px;
     transform: translateY(-50%);
     color: var(--warning);
     font-size: 1.2rem;
-    z-index: 5;
-    /* Z-index réduit pour être DERRIÈRE les boutons */
     pointer-events: none;
     filter: drop-shadow(0 0 5px var(--warning));
+    z-index: 1;
+    opacity: 0.35;
+    font-size: 1rem;
+    filter: none;
 }
 
 .trail {
     position: absolute;
     width: 4px;
     height: 4px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(139, 85, 85, 0.5);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9;
 }
+
 
 .nav-desktop {
     display: flex;
@@ -174,17 +219,14 @@ main {
 .cockpit-btn {
     color: var(--text);
     font-weight: 700;
-    padding: 0.5rem 0.8rem;
+    padding: 0.75rem 1.1rem;
     text-transform: uppercase;
-    font-size: 0.85rem;
+    font-size: 10px;
     font-family: var(--font-oswald);
     letter-spacing: 1px;
     position: relative;
     transition: all 0.2s ease;
-    /* background: linear-gradient(180deg, #0f1630 0%, #0a0e27 100%); */
-    background: linear-gradient(180deg,
-            #151d3f 0%,
-            #0f1630 100%);
+    background: linear-gradient(180deg, #0f1630 0%, #0a0e27 100%);
     border: 1px solid rgba(255, 59, 59, 0.2);
     border-radius: 4px;
     display: flex;
@@ -194,8 +236,8 @@ main {
 
 /* Numéro de porte dans le bouton */
 .gate-number {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-family: var(--font-oswald);
+    font-size: 6px;
     font-weight: 700;
     color: var(--accent-bright);
     min-width: 36px;
@@ -207,7 +249,7 @@ main {
 
 /* Effet de pression au survol */
 .cockpit-btn:hover {
-    color: var(--text);
+    color: var(--accent-bright);
     font-weight: bold;
     border-color: var(--accent);
     transform: translateY(-1px);
@@ -227,6 +269,13 @@ main {
 }
 
 
+.nav-label {
+    font-family: var(--font-oswald);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gradient);
+}
 
 .nav-link {
     color: var(--text);
@@ -239,7 +288,8 @@ main {
     position: relative;
     transition: all 0.2s ease;
     background: linear-gradient(180deg, #0f1630 0%, #0a0e27 100%);
-    border: 1px solid rgba(255, 59, 59, 0.3);
+    border: 1px solid rgba(255, 59, 59, 0.2);
+    box-shadow: none;
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -256,934 +306,507 @@ main {
     box-shadow: 0 0 8px rgba(255, 59, 59, 0.2);
 }
 
-/* ───────────────────────────────────────────────────────────────────────
-   PARTIE 1 : VUE PANORAMIQUE (Baies vitrées de la tour)
-   ─────────────────────────────────────────────────────────────────────── */
-.tower-windows {
+.nav-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 6px rgba(139, 30, 63, 0.25);
+    background: linear-gradient(180deg, #141d3b 0%, #0f1630 100%);
+
+}
+
+.nav-desktop,
+.logo {
     position: relative;
-    min-height: 65vh;
-    background: var(--bg-gradient);
-    overflow: hidden;
-    display: grid;
-    place-items: center;
+    z-index: 5;
 }
 
-/* Montants verticaux (structure de baie vitrée) */
-.tower-windows::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        repeating-linear-gradient(90deg,
-            transparent 0 14%,
-            color-mix(in srgb, var(--text) 10%, transparent) 14% 14.2%,
-            transparent 14.2% 28%);
-    opacity: 0.35;
-    pointer-events: none;
+
+/* ==========================================================================
+   CONTACT — TOUR DE CONTRÔLE
+   - Sémantique OK côté HTML
+   - UI sobre / premium
+   - Un seul élément immersif: fréquence active
+   - Piste animée conservée mais discrète
+   - AUCUN jaune (ne pas utiliser --warning)
+   ========================================================================== */
+
+.tower-control { background: var(--primary); }
+
+/* Skip link */
+.skip-link{
+  position:absolute;
+  left:-999px;
+  top: 0;
+  padding:.75rem 1rem;
+  background: rgba(15,22,48,.95);
+  border: 1px solid rgba(255,59,59,.6);
+  color: var(--text);
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  z-index: 999;
+}
+.skip-link:focus{ left: 1rem; top: 1rem; }
+
+/* =========================
+   HERO
+   ========================= */
+
+.tower-hero{
+  position: relative;
+  min-height: 56vh;
+  display: grid;
+  place-items: center;
+  background: var(--bg-gradient);
+  border-bottom: 1px solid rgba(139,30,63,.25);
+  overflow: hidden;
 }
 
-/* Ciel et horizon */
-.sky-view {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
+/* Décor */
+.tower-decor{ position:absolute; inset:0; z-index: 0; }
+
+.tower-grid{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(230,238,248,0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(230,238,248,0.028) 1px, transparent 1px);
+  background-size: 96px 96px;
+  opacity: .55;
 }
 
-.sky-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg,
-            var(--primary) 0%,
-            var(--primary-2) 40%,
-            var(--accent) 100%);
-    opacity: 0.6;
+.sky{ position:absolute; inset:0; pointer-events:none; }
+
+.sky-glow{
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at 50% 55%, rgba(255,59,59,.10) 0%, transparent 58%);
 }
 
-.clouds {
-    position: absolute;
-    inset: 0;
+.cloud{
+  position:absolute;
+  width: 150px;
+  height: 40px;
+  border-radius: 999px;
+  background: radial-gradient(ellipse at center, rgba(230,238,248,0.09) 0%, transparent 70%);
+  filter: blur(1px);
+  opacity: .55;
+  animation: cloudDrift 28s linear infinite;
 }
 
-.cloud {
-    position: absolute;
-    top: 20%;
-    left: var(--x);
-    width: 100px;
-    height: 30px;
-    background: radial-gradient(ellipse at center,
-            rgba(230, 238, 248, 0.1) 0%,
-            transparent 70%);
-    border-radius: 50%;
-    animation: cloud-drift 30s linear infinite;
-    animation-delay: var(--delay);
+.cloud--a{ left: 18%; top: 18%; animation-delay: 0s; }
+.cloud--b{ left: 55%; top: 22%; animation-delay: 6s; }
+.cloud--c{ left: 82%; top: 16%; animation-delay: 12s; }
+
+@keyframes cloudDrift{
+  from{ transform: translateX(-140px); }
+  to{ transform: translateX(calc(100vw + 140px)); }
 }
 
-@keyframes cloud-drift {
-    from {
-        transform: translateX(-100px);
-    }
-
-    to {
-        transform: translateX(calc(100vw + 100px));
-    }
+.horizon{
+  position:absolute;
+  left:0; right:0;
+  top: 52%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(139,30,63,.75) 50%, transparent 100%);
+  opacity: .32;
 }
 
-.horizon-line {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg,
-            transparent 0%,
-            var(--accent) 50%,
-            transparent 100%);
-    opacity: 0.4;
+/* Piste (plus lisible) */
+.runway{
+  position:absolute;
+  inset-inline:0;
+  bottom: -8vh;
+  height: 46vh;
+  display:grid;
+  place-items:end center;
 }
 
-/* Piste vue depuis la tour */
-.runway-perspective {
-    position: absolute;
-    inset-inline: 0;
-    bottom: -6vh;
-    height: 44vh;
-    display: grid;
-    place-items: end center;
-    z-index: 2;
-    pointer-events: none;
+.runway-surface{
+  position:relative;
+  width: min(70vw, 720px);
+  height: 100%;
+  clip-path: polygon(46% 0, 54% 0, 92% 100%, 8% 100%);
+  background:
+    linear-gradient(180deg, rgba(15,22,48,.25) 0%, rgba(10,14,39,.88) 80%),
+    linear-gradient(180deg, rgba(139,30,63,.00) 0%, rgba(139,30,63,.22) 62%, rgba(10,14,39,.00) 100%);
+  border: 1px solid rgba(139,30,63,.18);
+  overflow:hidden;
 }
 
-.runway-strip {
-    width: min(70vw, 720px);
-    height: 100%;
-    background:
-        linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--accent) 18%, transparent) 45%, transparent 100%),
-        linear-gradient(180deg, color-mix(in srgb, var(--primary-2) 65%, transparent), color-mix(in srgb, var(--primary) 92%, transparent));
-    clip-path: polygon(46% 0, 54% 0, 92% 100%, 8% 100%);
-    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
-    box-shadow: 0 30px 80px color-mix(in srgb, #000 55%, transparent);
-    position: relative;
-    overflow: hidden;
+/* centerline animée */
+.runway-centerline{
+  position:absolute;
+  width: min(70vw, 720px);
+  height: 46vh;
+  clip-path: polygon(49.2% 0, 50.8% 0, 57% 100%, 43% 100%);
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(230,238,248,0.24) 0 12px,
+    transparent 12px 34px
+  );
+  opacity: .62;
+  animation: runwayScroll 1.05s linear infinite;
+  transform: translateY(0);
 }
 
-/* Lignes centrales animées */
-.runway-strip::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        repeating-linear-gradient(180deg,
-            color-mix(in srgb, var(--text) 22%, transparent) 0 12px,
-            transparent 12px 34px);
-    clip-path: polygon(49% 0, 51% 0, 56% 100%, 44% 100%);
-    opacity: 0.55;
-    animation: runway-scroll 1.2s linear infinite;
+@keyframes runwayScroll{
+  from{ background-position: 0 0; }
+  to{ background-position: 0 46px; }
 }
 
-@keyframes runway-scroll {
-    from {
-        background-position: 0 0;
-    }
-
-    to {
-        background-position: 0 46px;
-    }
+/* feux (pas de jaune) */
+.runway-lights{
+  position:absolute;
+  inset:0;
 }
-/* Clouds: positions + delays sans inline */
-.clouds .cloud:nth-child(1){ left: 20%; animation-delay: 0s; }
-.clouds .cloud:nth-child(2){ left: 60%; animation-delay: 3s; }
-.clouds .cloud:nth-child(3){ left: 85%; animation-delay: 6s; }
 
-/* Runway lights: positions + delays sans inline */
+.runway-lights .light{
+  position:absolute;
+  bottom: 13%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(230,238,248,0.55);
+  box-shadow: 0 0 12px rgba(230,238,248,0.16);
+  opacity: .7;
+  animation: lightBlink 2.4s ease-in-out infinite;
+}
+
 .runway-lights .light:nth-child(1){ left: 10%; animation-delay: 0s; }
 .runway-lights .light:nth-child(2){ left: 30%; animation-delay: .2s; }
 .runway-lights .light:nth-child(3){ left: 50%; animation-delay: .4s; }
 .runway-lights .light:nth-child(4){ left: 70%; animation-delay: .6s; }
 .runway-lights .light:nth-child(5){ left: 90%; animation-delay: .8s; }
 
-/* si tes .light n'étaient pas positionnées en absolute */
-.runway-lights{ position: absolute; inset: 0; }
-.runway-lights .light{ position:absolute; bottom: 12%; }
-/* Feux de piste (bords) */
-
-/* .runway-lights .light {
-    position: absolute;
-    bottom: 6%;
-    width: 6px;
-    height: 6px;
-    background: var(--warning);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--warning);
-    opacity: 0.9;
-    animation: light-blink 1.8s ease-in-out infinite;
-} */
-
-/* positions sans style inline */
-/* .runway-lights .light:nth-child(1) {
-    left: 14%;
-    animation-delay: .0s;
-}
-
-.runway-lights .light:nth-child(2) {
-    left: 28%;
-    animation-delay: .2s;
-}
-
-.runway-lights .light:nth-child(3) {
-    left: 50%;
-    animation-delay: .4s;
-}
-
-.runway-lights .light:nth-child(4) {
-    left: 72%;
-    animation-delay: .6s;
-}
-
-.runway-lights .light:nth-child(5) {
-    left: 86%;
-    animation-delay: .8s;
-} */
-
-@keyframes light-blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: .25;
-    }
-}
-
-/* .light {
-    width: 6px;
-    height: 6px;
-    background: var(--warning);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--warning);
-    animation: light-blink 2s ease-in-out infinite;
-    animation-delay: calc(var(--pos) * 0.05s);
-} */
-
-/* @keyframes light-blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.3;
-    }
-} */
-
-/* Reflet de vitre */
-.window-frame {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 3;
-}
-
-.window-reflection {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg,
-            transparent 0%,
-            color-mix(in srgb, var(--text) 6%, transparent) 40%,
-            transparent 60%,
-            color-mix(in srgb, var(--accent-bright) 4%, transparent) 100%);
-    opacity: 0.35;
-}
-
-.window-beam {
-    position: absolute;
-    top: 0;
-    left: 20%;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg,
-            transparent 0%,
-            rgba(230, 238, 248, 0.1) 50%,
-            transparent 100%);
-}
-
-/* Header de la tour */
-.tower-header {
-    position: relative;
-    z-index: 4;
-    text-align: center;
-    max-width: 900px;
-    padding: 2rem;
-}
-
-.tower-callsign {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1.5rem;
-    background: rgba(139, 30, 63, 0.1);
-    border: 1px solid var(--accent);
-    border-radius: 100px;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--accent-bright);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-}
-
-.callsign-led {
-    width: 10px;
-    height: 10px;
-    background: var(--accent-bright);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent-bright);
-    animation: led-pulse 2s ease-in-out infinite;
-}
-
-@keyframes led-pulse {
-
-    0%,
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    50% {
-        opacity: 0.4;
-        transform: scale(0.8);
-    }
+@keyframes lightBlink{ 0%,100%{opacity:.78} 50%{opacity:.28} }
+
+/* reflets vitres */
+.glass{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(135deg, transparent 0%, rgba(230,238,248,0.04) 40%, transparent 60%, rgba(255,59,59,0.03) 100%);
+  opacity: .55;
+}
+.glass-beam{
+  position:absolute;
+  top:0; left:22%;
+  width:2px; height:100%;
+  background: linear-gradient(180deg, transparent 0%, rgba(230,238,248,0.10) 50%, transparent 100%);
+  opacity: .6;
+}
+
+/* Contenu hero */
+.tower-hero__content{
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 6rem 1.5rem 3.5rem;
+  max-width: 980px;
+}
+
+.frequency-badge{
+  margin: 0 0 1.25rem;
+  display:inline-flex;
+  align-items:center;
+  gap:.75rem;
+  padding: .65rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(139,30,63,.55);
+  background: rgba(139,30,63,.10);
+}
+
+.frequency-led{
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent-bright);
+  box-shadow: 0 0 14px rgba(255,59,59,.35);
+  animation: ledPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes ledPulse{ 0%,100%{opacity:1} 50%{opacity:.35} }
+
+.frequency-text{
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+}
+
+.tower-title{
+  margin: 0 0 .9rem;
+  font-family: var(--font-oswald);
+  font-size: clamp(2.6rem, 5.3vw, 5rem);
+  line-height: 1;
+  color: var(--text);
+  letter-spacing: .04em;
+}
+
+.tower-title__accent{
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: .06em;
+}
+
+.tower-subtitle{
+  margin: 0;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  letter-spacing: .03em;
+}
+
+/* =========================
+   FORM CENTRÉ
+   ========================= */
+
+.tower-contact{
+  padding: 2.5rem 0 5.5rem;
+  background: var(--primary);
+}
+
+.contact-console{
+  margin-inline: auto;
+  max-width: 980px;
+  background: rgba(15,22,48,.55);
+  border: 1px solid rgba(139,30,63,.32);
+  border-radius: 14px;
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 22px 60px rgba(0,0,0,.35);
+}
+
+.console-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(139,30,63,.25);
+}
+
+.console-title{
+  margin:0;
+  font-family: var(--font-oswald);
+  font-size: 1.35rem;
+  letter-spacing:.12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.console-meta{
+  margin:.35rem 0 0;
+  font-family: var(--font-mono);
+  font-size:.82rem;
+  color: var(--text-dim);
+  letter-spacing:.06em;
+}
+
+.console-status{
+  margin:0;
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  letter-spacing:.10em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.status-dot{
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--accent-bright);
+  box-shadow: 0 0 12px rgba(255,59,59,.22);
+  opacity: .85;
+}
+
+/* Form */
+.form-fieldset{ border:0; padding:0; margin:0; }
+
+.form-row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem;
+}
+
+@media (max-width: 900px){
+  .form-row{ grid-template-columns: 1fr; }
+}
+
+.field{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  margin-bottom: 1.15rem;
+}
+
+.field-label{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  font-family: var(--font-mono);
+  font-size:.75rem;
+  letter-spacing:.10em;
+  text-transform: uppercase;
+  color: var(--text-dim);
 }
-
-.tower-title {
-    font-family: var(--font-oswald);
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    font-weight: 700;
-    line-height: 1.1;
-    margin: 0 0 1.5rem;
-}
-
-.title-line {
-    display: block;
-    color: var(--text);
-}
-
-.title-highlight {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.tower-subtitle {
-    font-family: var(--font-mono);
-    font-size: clamp(0.85rem, 2vw, 1rem);
-    color: var(--text-dim);
-    letter-spacing: 0.05em;
-    line-height: 1.6;
-}
-
-/* ───────────────────────────────────────────────────────────────────────
-   PARTIE 2 : CONSOLE DE CONTRÔLE (Workstation)
-   ─────────────────────────────────────────────────────────────────────── */
-
-.control-workstation {
-    padding: 4rem 0 6rem;
-    background: var(--primary);
-}
-
-.workstation-container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: 350px 1fr;
-    gap: 2rem;
-}
-
-/* ═══════════════════════════════════════
-   MONITORING STATION (Écrans)
-   ═══════════════════════════════════════ */
-
-.monitoring-station {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.monitor-unit {
-    background: rgba(15, 22, 48, 0.6);
-    border: 1px solid rgba(139, 30, 63, 0.3);
-    border-radius: 8px;
-    padding: 1.25rem;
-    backdrop-filter: blur(10px);
-}
-
-.monitor-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 0.75rem;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid rgba(139, 30, 63, 0.2);
-}
-
-.monitor-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin: 0;
-}
-
-.monitor-status {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--accent-bright);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-.monitor-status.active {
-    color: var(--warning);
-}
-
-.monitor-status.auto {
-    color: var(--text-dim);
-}
-
-.monitor-screen {
-    min-height: 100px;
-}
-
-/* RADAR */
-.radar-scope {
-    width: 100%;
-    height: 100%;
-    min-height: 200px;
-}
-
-.radar-scope circle,
-.radar-scope line {
-    color: var(--accent);
-}
-
-.radar-scope text {
-    fill: var(--warning);
-}
-
-/* MÉTÉO */
-.metar-data {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin: 0;
-}
-
-.metar-row {
-    display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 1rem;
-    padding: 0.5rem 0.75rem;
-    background: rgba(10, 14, 39, 0.5);
-    border-left: 2px solid var(--accent);
-    border-radius: 4px;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-}
-
-.metar-row dt {
-    color: var(--text-dim);
-    font-weight: 600;
-}
-
-.metar-row dd {
-    color: var(--text);
-    margin: 0;
-    text-align: right;
-}
-
-/* TRAFIC */
-.traffic-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.traffic-entry {
-    display: grid;
-    grid-template-columns: auto 1fr auto auto;
-    gap: 0.75rem;
-    align-items: center;
-    padding: 0.5rem 0.75rem;
-    background: rgba(10, 14, 39, 0.5);
-    border-radius: 4px;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-}
-
-.traffic-led {
-    width: 8px;
-    height: 8px;
-    background: var(--text-dim);
-    border-radius: 50%;
-}
-
-.traffic-led.active {
-    background: var(--warning);
-    box-shadow: 0 0 8px var(--warning);
-    animation: traffic-blink 2s ease-in-out infinite;
-}
-
-@keyframes traffic-blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.3;
-    }
-}
-
-.traffic-callsign {
-    color: var(--text);
-    font-weight: 600;
-}
-
-.traffic-type {
-    color: var(--text-dim);
-    font-size: 0.7rem;
-}
-
-.traffic-altitude {
-    color: var(--accent-bright);
-    font-weight: 600;
-}
-
-/* FRÉQUENCES */
-.frequency-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.frequency-channel {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 0.75rem;
-    align-items: center;
-    padding: 0.5rem 0.75rem;
-    background: rgba(10, 14, 39, 0.5);
-    border-radius: 4px;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.frequency-channel:hover {
-    background: rgba(139, 30, 63, 0.1);
-}
-
-.frequency-channel.active {
-    background: rgba(139, 30, 63, 0.2);
-    border-left: 3px solid var(--accent-bright);
-    color: var(--text);
-}
-
-.frequency-channel data {
-    color: var(--accent-bright);
-    font-weight: 600;
-}
-
-.channel-led {
-    width: 6px;
-    height: 6px;
-    background: var(--text-dim);
-    border-radius: 50%;
-}
-
-.frequency-channel.active .channel-led {
-    background: var(--warning);
-    box-shadow: 0 0 6px var(--warning);
-    animation: channel-pulse 2s ease-in-out infinite;
-}
-
-@keyframes channel-pulse {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.4;
-    }
-}
-
-/* ═══════════════════════════════════════
-   TRANSMISSION STATION (Formulaire)
-   ═══════════════════════════════════════ */
-
-.transmission-station {
-    background: rgba(15, 22, 48, 0.6);
-    border: 2px solid rgba(139, 30, 63, 0.4);
-    border-radius: 12px;
-    padding: 2rem;
-    backdrop-filter: blur(10px);
-}
-
-.station-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 1.5rem;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid var(--accent);
-}
-
-.station-title {
-    font-family: var(--font-oswald);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin: 0;
-}
-
-.station-status {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-.system-led {
-    width: 10px;
-    height: 10px;
-    background: var(--warning);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--warning);
-    animation: system-pulse 2s ease-in-out infinite;
-}
-
-@keyframes system-pulse {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.4;
-    }
-}
-
-/* FORMULAIRE */
-.transmission-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    position: relative;
-}
-
-.field-label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-.field-code {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 32px;
-    height: 20px;
-    background: rgba(139, 30, 63, 0.2);
-    border: 1px solid var(--accent);
-    border-radius: 4px;
-    font-size: 0.65rem;
-    color: var(--accent-bright);
-}
-
-.field-label abbr {
-    color: var(--accent-bright);
-    text-decoration: none;
-    margin-left: auto;
-}
-
-.field-input {
-    width: 100%;
-    padding: 1rem 1.25rem;
-    background: rgba(10, 14, 39, 0.7);
-    border: 1px solid rgba(139, 30, 63, 0.3);
-    border-radius: 6px;
-    font-family: var(--font-inter);
-    font-size: 0.95rem;
-    color: var(--text);
-    transition: all 0.3s ease;
-}
-
-.field-input::placeholder {
-    color: rgba(159, 168, 179, 0.4);
-}
-
-.field-input:focus {
-    outline: none;
-    border-color: var(--accent-bright);
-    background: rgba(10, 14, 39, 0.95);
-    box-shadow: 0 0 0 3px rgba(255, 59, 59, 0.1);
-}
-
-.field-textarea {
-    resize: vertical;
-    min-height: 140px;
-    line-height: 1.6;
-    font-family: var(--font-inter);
-}
-
-/* Effet de scan sur focus */
-.field-scan {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent-bright);
-    transition: width 0.4s ease;
-    pointer-events: none;
-}
-
-.field-input:focus~.field-scan {
-    width: 100%;
-}
-
-.field-error {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--accent-bright);
-    min-height: 1rem;
-}
-
-/* BOUTON PRESS TO TALK */
-.form-actions {
-    margin-top: 1rem;
-}
-
-.btn-ptt {
-    position: relative;
-    width: 100%;
-    display: grid;
-    grid-template-columns: auto auto 1fr auto;
-    gap: 1rem;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    background: var(--accent);
-    border: 2px solid var(--accent-bright);
-    border-radius: 8px;
-    font-family: var(--font-oswald);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.btn-ptt::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.2) 50%,
-            transparent 100%);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.btn-ptt:hover::before {
-    transform: translateX(100%);
-}
-
-.btn-ptt:hover {
-    background: var(--accent-bright);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(255, 59, 59, 0.4);
-}
-
-.btn-ptt:active {
-    transform: translateY(0);
-}
-
-.btn-ptt:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.ptt-led {
-    width: 12px;
-    height: 12px;
-    background: var(--warning);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--warning);
-    animation: ptt-pulse 2s ease-in-out infinite;
-}
-
-@keyframes ptt-pulse {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.3;
-    }
-}
-
-.ptt-icon {
-    display: flex;
-    align-items: center;
-    color: var(--text);
-}
-
-.ptt-hint {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: rgba(230, 238, 248, 0.6);
-    letter-spacing: 0.1em;
-}
-
-/* CONFIRMATION */
-.transmission-ack {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    background: rgba(250, 204, 21, 0.1);
-    border: 2px solid var(--warning);
-    border-radius: 8px;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: all 0.4s ease;
-}
-
-.transmission-ack:not([hidden]) {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.ack-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: var(--warning);
-    border-radius: 50%;
-    font-size: 1.5rem;
-    flex-shrink: 0;
-}
-
-.ack-title {
-    font-family: var(--font-oswald);
-    font-size: 1.1rem;
-    color: var(--warning);
-    letter-spacing: 0.1em;
-    display: block;
-    margin-bottom: 0.5rem;
+
+.field-code{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width: 38px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid rgba(139,30,63,.55);
+  background: rgba(139,30,63,.18);
+  color: var(--accent-bright);
+  font-size: .65rem;
 }
 
-.ack-message {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    margin: 0;
+.req{
+  margin-left:auto;
+  color: var(--accent-bright);
+  text-decoration:none;
 }
 
-/* CONTACTS DIRECTS */
-.station-footer {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(139, 30, 63, 0.2);
+.field-input{
+  width:100%;
+  padding: .95rem 1.05rem;
+  border-radius: 10px;
+  border: 1px solid rgba(139,30,63,.25);
+  background: rgba(10,14,39,.72);
+  color: var(--text);
+  font-family: var(--font-inter);
+  font-size: .98rem;
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
 }
 
-.footer-heading {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--text-dim);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-}
-
-.direct-channels {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.channel-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
-    background: rgba(10, 14, 39, 0.8);
-    border-radius: 6px;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--accent-bright);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
+.field-input::placeholder{ color: rgba(159,168,179,.45); }
 
-.channel-link:hover {
-    background: rgba(139, 30, 63, 0.1);
-    transform: translateX(5px);
+.field-input:focus{
+  outline:none;
+  border-color: rgba(255,59,59,.75);
+  background: rgba(10,14,39,.92);
+  box-shadow: 0 0 0 3px rgba(255,59,59,.10);
+}
+
+.field-textarea{
+  resize: vertical;
+  min-height: 190px;
+  line-height: 1.6;
+}
+
+/* scan */
+.field-scan{
+  position:absolute;
+  left:0; right:0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent-bright);
+  transform: scaleX(0);
+  transform-origin:left;
+  transition: transform .35s ease;
+  pointer-events:none;
+}
+
+.field:focus-within .field-scan{ transform: scaleX(1); }
+
+.field-error{
+  min-height: 1rem;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--accent-bright);
+}
+
+/* Bouton PTT : conservé, moins agressif (accessibilité + premium) */
+.form-actions{ margin-top: .25rem; }
+
+.btn-ptt{
+  width:100%;
+  display:grid;
+  grid-template-columns: auto auto 1fr auto;
+  gap: .9rem;
+  align-items:center;
+
+  padding: 1.05rem 1.2rem;
+  border-radius: 10px;
+
+  background: rgba(139,30,63,.40);
+  border: 1px solid rgba(255,59,59,.55);
+  color: var(--text);
+
+  cursor:pointer;
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.btn-ptt:hover{
+  background: rgba(139,30,63,.52);
+  border-color: rgba(255,59,59,.70);
+  box-shadow: 0 16px 34px rgba(0,0,0,.25);
+  transform: translateY(-1px);
+}
+
+.btn-ptt:active{ transform: translateY(0); }
+
+.btn-ptt:focus-visible{
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+}
+
+.ptt-led{
+  width: 10px; height: 10px;
+  border-radius:50%;
+  background: rgba(230,238,248,.55);
+  box-shadow: 0 0 12px rgba(230,238,248,.18);
+}
+
+.ptt-icon{ display:flex; align-items:center; opacity:.9; }
+
+.ptt-text{
+  font-family: var(--font-oswald);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-size: 1.05rem;
+}
+
+.ptt-hint{
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(230,238,248,.65);
+}
+
+/* Ack */
+.form-ack{
+  margin-top: 1rem;
+  padding: .95rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,59,59,.35);
+  background: rgba(255,59,59,.08);
+  display:grid;
+  gap: .25rem;
+  font-family: var(--font-mono);
+  color: var(--text);
+}
+
+/* Noscript */
+.noscript{
+  margin: 1rem 0 0;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+}
+
+/* Réduction motion */
+@media (prefers-reduced-motion: reduce){
+  .frequency-led, .cloud, .runway-centerline, .runway-lights .light{
+    animation: none !important;
+  }
 }
 
 /* ==========================================================================

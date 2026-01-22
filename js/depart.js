@@ -3,20 +3,15 @@
         // =========================================================
 
         const entries = [
-            // Vol principal
-            { vol: "CH2025", dest: "PORTFOLIO PILOTE WEB", time: "NOW", gate: "A01", obs: "EMBARQUEMENT" },
-            // Projets développeur
-            { vol: "BKI01", dest: "SITE BOOKI RESA VOYAGE", time: "09:30", gate: "C03", obs: "PROJET DEV" },
-            { vol: "OMF02", dest: "SITE OHMYFOOD MENUS", time: "10:45", gate: "C03", obs: "PROJET DEV" },
-            { vol: "PAN03", dest: "LA PANTHERE REFONTE SEO", time: "11:30", gate: "C03", obs: "PROJET DEV" },
-            // Cahiers des charges / études de cas
-            { vol: "CWC01", dest: "COOK'N WAY PLATS MAISON", time: "12:15", gate: "D04", obs: "CAHIER" },
-            { vol: "CAM02", dest: "CAMI COURSES EXPRESS", time: "13:00", gate: "D04", obs: "CAHIER" },
-            { vol: "FKM03", dest: "FKM MOBILITE INCLUSIVE", time: "13:45", gate: "D04", obs: "CAHIER" },
-            // Langages / niveau
-            { vol: "SKL01", dest: "HTML & CSS ", time: "ALL", gate: "E05", obs: "COMPETENCES" },
-            { vol: "SKL02", dest: "JAVASCRIPT", time: "ALL", gate: "E05", obs: "APPRENTISSAGE" },
-            { vol: "SKL03", dest: "REACT PHP TS SASS", time: "ALL", gate: "E05", obs: "APPRENTISSAGE" },
+            { vol: "CKW01", dest: "COOK'N WAY", time: "09:00", gate: "A4", obs: "TERMINE" },
+            { vol: "CAM02", dest: "CAMI COURSES EXPRESS", time: "10:10", gate: "B2", obs: "LIVRE" },
+            { vol: "FKM03", dest: "MOBILITE INCLUSIVE", time: "12:20", gate: "C3", obs: "VALIDE" },
+            { vol: "HDR10", dest: "CHEF DE PROJET AGILE", time: "06:30", gate: "D1", obs: "ACTIF" },
+            { vol: "DEV21", dest: "DEVELOPPEMENT WEB", time: "16:40", gate: "A1", obs: "OPERATIONNEL" },
+            { vol: "SEO88", dest: "SEO / ACCESSIBILITE", time: "02:50", gate: "B4", obs: "100%" },
+            { vol: "JSS08", dest: "JAVASCRIPT", time: "12:00", gate: "C2", obs: "EN COURS" },
+            { vol: "API42", dest: "BACKEND LARAVEL", time: "22:10", gate: "D3", obs: "EN COURS" },
+            // { vol: "404ER", dest: "DEBUGGING SYSTEM", time: "--:--", gate: "X0", obs: "RESOLU" }
         ];
 
         // Configuration des colonnes : CORRIGÉE POUR LA COLONNE PORTE
@@ -27,7 +22,8 @@
             gate: 4,
             obs: 15
         };
-        const CHARS = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:'";
+        const CHARS = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:.-%";
+        
 
         // =========================================================
         // HORLOGE TEMPS RÉEL
@@ -280,3 +276,5 @@
         window.addEventListener("load", () => {
             animateDoorsAndBoard();
         });
+
+        

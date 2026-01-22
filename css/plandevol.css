@@ -256,7 +256,7 @@ main.container {
     box-shadow: 0 2px 8px rgba(139, 30, 63, 0.15);
 }
 
-/* .realtime-clock {
+.realtime-clock {
     font-family: var(--font-mono);
     font-size: 1rem;
     color: var(--bg-gradient);
@@ -266,7 +266,7 @@ main.container {
     border: 1px solid rgba(250, 204, 21, 0.3);
     letter-spacing: 1px;
     white-space: nowrap;
-} */
+}
 
 
 .nav-label {

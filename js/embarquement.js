@@ -111,28 +111,28 @@ const initPlaneNavAnimation = () => {
 // =========================================================
 // MICRO-INTERACTIONS : CLIGNOTEMENT DES NUMÉROS DE PORTE
 // =========================================================
-const initGateInteractions = () => {
-  const navLinks = document.querySelectorAll(".nav-link");
-  if (!navLinks.length) return;
+// const initGateInteractions = () => {
+//   const navLinks = document.querySelectorAll(".nav-link");
+//   if (!navLinks.length) return;
 
-  navLinks.forEach((link) => {
-    let blinkInterval;
-    const gateNumber = link.querySelector(".gate-number");
-    if (!gateNumber) return;
+//   navLinks.forEach((link) => {
+//     let blinkInterval;
+//     const gateNumber = link.querySelector(".gate-number");
+//     if (!gateNumber) return;
 
-    link.addEventListener("mouseenter", () => {
-      // Clignotement du numéro de porte entre rouge et jaune
-      blinkInterval = setInterval(() => {
-        gateNumber.style.color = gateNumber.style.color === "#ff3b3b" ? "#facc15" : "#ff3b3b";
-      }, 500);
-    });
+//     link.addEventListener("mouseenter", () => {
+//       // Clignotement du numéro de porte entre rouge et jaune
+//       blinkInterval = setInterval(() => {
+//         gateNumber.style.color = gateNumber.style.color === "#ff3b3b" ? "#facc15" : "#ff3b3b";
+//       }, 500);
+//     });
 
-    link.addEventListener("mouseleave", () => {
-      clearInterval(blinkInterval);
-      gateNumber.style.color = "#ff3b3b";
-    });
-  });
-};
+//     link.addEventListener("mouseleave", () => {
+//       clearInterval(blinkInterval);
+//       gateNumber.style.color = "#ff3b3b";
+//     });
+//   });
+// };
 
 // =========================================================
 // INITIALISATION GLOBALE
